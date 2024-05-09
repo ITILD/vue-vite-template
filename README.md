@@ -1,2 +1,2 @@
-# vue-vite-template
-vue-vite-template
+# code-template
+code-template
