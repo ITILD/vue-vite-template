@@ -1,0 +1,12 @@
+{
+  "name": "pyWebview_test",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "conda activate test_all & python src/main.py",
+    "build": "conda activate test_all & pyinstaller --distpath=test --workpath=test --specpath=test  -D -w  src/main.py",
+    "build1": "conda activate test_all & pyinstaller --icon=src/assets/img/ion/favicon.ico -D -w   src/main.py",
+    "build2": "conda activate test_all &nuitka --windows-disable-consol  --standalone --output-dir=out1 --output-filename=TestAppName  --windows-icon-from-ico=src/assets/img/ion/favicon.ico src/main.py  ",
+    "update_install_lib": "conda activate test_all &  pipreqs --use-local --encoding=utf8 --force . & pip install -r requirements.txt",
+    "update_all_lib": "conda activate test_all & pip freeze > requirements.txt"
+  }
+}

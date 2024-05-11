@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>录制视频</title>
+</head>
+<body>
+<button id="startButton">开始录制</button>
+<button id="stopButton" disabled>停止录制</button>
+<video id="videoElement" autoplay></video>
+
+<script>
+let mediaRecorder;
+let recordedChunks = [];
+
+const startButton = document.getElementById('startButton');
+const stopButton = document.getElementById('stopButton');
+const videoElement = document.getElementById('videoElement');
+
+startButton.addEventListener('click', async () => {
+  const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+  videoElement.srcObject = stream;
+  mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+
+  mediaRecorder.ondataavailable = event => {
+    if (event.data.size > 0) {
+      recordedChunks.push(event.data);
+    }
+  };
+
+  mediaRecorder.onstop = () => {
+    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    a.style = 'display: none';
+    a.href = url;
+    a.download = 'recorded_video.wav';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
+
+  mediaRecorder.start();
+  startButton.disabled = true;
+  stopButton.disabled = false;
+});
+
+stopButton.addEventListener('click', () => {
+  mediaRecorder.stop();
+  startButton.disabled = false;
+  stopButton.disabled = true;
+});
+
+</script>
+</body>
+</html>
