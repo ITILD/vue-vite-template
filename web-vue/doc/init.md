@@ -2,11 +2,12 @@
 
 ```sh
 # base extention
-pnpm add @vueuse/core
+
 
 # css 编译辅助
-pnpm add -D unocss
+pnpm add -D unocss @unocss/reset
 # 添加uno.config.ts
+# main.ts 添加 import 'virtual:uno.css'
 
 
 # unplugin ex
