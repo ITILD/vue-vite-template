@@ -8,6 +8,10 @@
 conda env list
 # 添加源
 conda config --append channels conda-forge
+
+# 初始环境
+conda create -n server_py python=3.10 
+
 # 进入环境
 conda activate server_py
 ```
@@ -27,6 +31,9 @@ conda install python-multipart
 conda install aiosqlite aiofiles
 # full server
 conda install uvicorn fastapi sqlmodel python-multipart aiosqlite aiofiles
+
+# 导出
+conda env export > environment.yaml
 ```
 
 ### 设置 launch.json debug
@@ -34,8 +41,9 @@ conda install uvicorn fastapi sqlmodel python-multipart aiosqlite aiofiles
 ```sh
 # 进入环境
 conda activate server_py
-# 查看python 路径
-which python
+# 查看python 路径 
+which python # linux
+where.exe python # windows
 ```
 路径放在.vscode/launch.json下python
 
