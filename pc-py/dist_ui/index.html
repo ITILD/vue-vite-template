@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+</head>
+<body>
+<input id="select_dir_id" disabled="disabled" style="width: 400px" placeholder="显示选择的目录">
+<button onClick="selectDir()">测试选择目录</button><br/>
+<input id="select_file_id" disabled="disabled" style="width: 400px" placeholder="显示选择的文件(*.bmp;*.jpg;*.gif;*.png)">
+<button onClick="selectFile()">测试选择文件</button><br/>
+<input id="input1_id" placeholder="参数1">
+<input id="input2_id" placeholder="参数2">
+<input id="input3_id" placeholder="参数3">
+<button onClick="testArgcs()">测试传入多参数，模拟耗时请求</button><br/>
+<div id="response-container"></div>
+<script>
+    window.addEventListener('pywebviewready', function() {
+        console.log('pywebview is ready');
+    })
+
+    function selectDir() {
+        pywebview.api.select_dir().then((response)=>{
+            //alert(response);
+            document.getElementById('select_dir_id').value = response;
+        })
+    }
+    
+    function selectFile() {
+        pywebview.api.select_file().then((response)=>{
+            //alert(response);
+            document.getElementById('select_file_id').value = response;
+        })
+    }
+    function testArgcs() {
+        var arg1 = document.getElementById('input1_id').value;
+        var arg2 = document.getElementById('input2_id').value;
+        var arg3 = document.getElementById('input3_id').value;
+        pywebview.api.test_argcs(arg1, arg2, arg3).then((response)=>{
+            alert(response);
+        })
+    }
+</script>
+</body>
+</html>

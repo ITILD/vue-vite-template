@@ -1,13 +1,7 @@
 import webview
 
-class Api:
-    def getMessage(self):
-        return 'Hello from the Python backend!'
-
-def main():
-    api = Api()
-    webview.create_window('Pywebview Example', 'index.html', js_api=api, width=800, height=600)
-    webview.start()
-
 if __name__ == '__main__':
-    main()
+    # Create a resizable webview window with minimum size constraints
+    webview.create_window('Frameless window', 'http://pywebview.flowrl.com/hello',
+                          frameless=True, easy_drag=True)
+    webview.start()

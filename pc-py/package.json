@@ -2,7 +2,7 @@
   "name": "pyWebview_test",
   "version": "0.0.0",
   "scripts": {
-    "test": "conda activate pc_py & python test/main.py",
+    "test": "conda activate test_all & python test/main.py",
     "dev": "conda activate test_all & python src/main.py",
     "build": "conda activate test_all & pyinstaller --distpath=test --workpath=test --specpath=test  -D -w  src/main.py",
     "build1": "conda activate test_all & pyinstaller --icon=src/assets/img/ion/favicon.ico -D -w   src/main.py",
