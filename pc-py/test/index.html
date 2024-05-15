@@ -13,7 +13,11 @@
 
     <script>
       async function getMessageFromBackend() {
-        const message = await window.pywebview.api.getMessage();
+        const message = await window.pywebview.api.handle_request({
+          path:"/home",
+          method:"GET",
+          data:'aaaaa'
+        });
         document.getElementById("message").innerText = message;
       }
     </script>
