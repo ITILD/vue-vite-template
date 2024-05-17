@@ -8,12 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BaseTable: typeof import('./components/minUi/table/BaseTable.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
-    IconCommunity: typeof import('./components/icons/IconCommunity.vue')['default']
-    IconDocumentation: typeof import('./components/icons/IconDocumentation.vue')['default']
-    IconEcosystem: typeof import('./components/icons/IconEcosystem.vue')['default']
-    IconSupport: typeof import('./components/icons/IconSupport.vue')['default']
-    IconTooling: typeof import('./components/icons/IconTooling.vue')['default']
     MinOption: typeof import('./components/minUi/dropdowns/min-option.vue')['default']
     MinPopover: typeof import('./components/minUi/button/MinPopover.vue')['default']
     MinSelect: typeof import('./components/minUi/dropdowns/min-select.vue')['default']
@@ -23,7 +17,5 @@ declare module 'vue' {
     ShowHiddenMove: typeof import('./components/minUi/animation/ShowHiddenMove.vue')['default']
     SimplePopover: typeof import('./components/minUi/button/SimplePopover.vue')['default']
     StateLoading: typeof import('./components/minUi/animation/StateLoading.vue')['default']
-    TheWelcome: typeof import('./components/TheWelcome.vue')['default']
-    WelcomeItem: typeof import('./components/WelcomeItem.vue')['default']
   }
 }
