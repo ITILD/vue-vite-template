@@ -1,2 +1,3 @@
 .vscode
+*.pyc
 pnpm-lock.yaml
