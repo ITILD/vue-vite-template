@@ -3,9 +3,6 @@ import logging.config
 #默认的warning级别，只输出warning以上的
 #使用basicConfig()来指定日志级别和相关信息
 from config.path import path_base,path_config
-import os
-
-
 # 读取配置文件
 logging.config.fileConfig(path_config,encoding='utf-8')
 
