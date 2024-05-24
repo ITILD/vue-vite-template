@@ -1,9 +1,9 @@
 # self
-import logging
 from config.log import console
 # lib
 from functools import wraps
 # from sqlalchemy import create_engine
+import aiosqlite # 依赖写全防止找不到
 from sqlmodel import create_engine, Session
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlmodel.ext.asyncio.session import AsyncSession

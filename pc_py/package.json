@@ -1,6 +1,8 @@
 {
   "name": "pyWebview_test",
   "version": "0.0.0",
+  "server_dir_path":"../srver_py",
+  "server_main":"",
   "scripts": {
     "test": "conda activate test_all & python test/main.py",
     "dev": "conda activate test_all & python src/main.py",

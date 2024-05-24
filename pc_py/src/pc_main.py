@@ -11,18 +11,19 @@ print(path_html,__name__)
 
 # 启动
 if __name__ == "__main__":
+    '''server'''
     from main import *
     from main import app,console
     import uvicorn
     import threading
     from pc_util import port_ex
     port = port_ex.get_unused_port()
-    console.log("pc 启动器...")
     # 启动FastAPI服务 daemon守护线程,整个python程序退出时自动卸载
     threading.Thread(target=uvicorn.run, args=(app,), kwargs={"host":"localhost","port": port,"reload":"True"},daemon=True).start()
-    # pc
+    '''pc'''
     import webview
     webview.create_window('pc', f'http://localhost:{port}')
     webview.start()
+    console.log("pc:启动器...{port}")
 
 

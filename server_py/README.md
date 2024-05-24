@@ -10,10 +10,10 @@ conda env list
 conda config --append channels conda-forge
 
 # 初始环境
-conda create -n server_py python=3.10 
+conda create -n test_all python=3.10 
 
 # 进入环境
-conda activate server_py
+conda activate test_all
 ```
 
 ### lib
@@ -34,13 +34,19 @@ conda install uvicorn fastapi sqlmodel python-multipart aiosqlite aiofiles
 
 # 导出
 conda env export > environment.yaml
+# 导入 test_all
+conda env create -f environment.yml -n test_all
+# 把环境 rcnn 重命名成 tf
+conda create -n tf --clone rcnn
+conda remove -n rcnn --all 
+
 ```
 
 ### 设置 launch.json debug
 
 ```sh
 # 进入环境
-conda activate server_py
+conda activate test_all
 # 查看python 路径 
 which python # linux
 where.exe python # windows
@@ -59,7 +65,8 @@ where.exe python # windows
             "args": [
                 "src.main:app", "--reload","--port", "1667"
             ],
-            "python":"/opt/conda/envs/server_py/bin/python",
+            // linux
+            "python":"/opt/conda/envs/test_all/bin/python",
             "jinja": true,
             "justMyCode": true,
             "env": {"PYTHONPATH": "${workspaceRoot}/src"}
