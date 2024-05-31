@@ -11,3 +11,7 @@ def get_unused_port():
             return port
         except OSError:
             pass
+
+port_no_used = get_unused_port()
+
+print("未使用端口.....:", port_no_used)

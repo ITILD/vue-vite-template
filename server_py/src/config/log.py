@@ -4,6 +4,7 @@ import logging.config
 #使用basicConfig()来指定日志级别和相关信息
 from config.path import path_base,path_config
 # 读取配置文件
+print(path_config)
 logging.config.fileConfig(path_config,encoding='utf-8')
 
 '''

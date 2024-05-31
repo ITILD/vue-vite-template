@@ -48,4 +48,4 @@ def dealToken(request: Request,response:Response):
     
 
 
-console.log('...服务配置完成')
+console.log('...server服务配置完成')

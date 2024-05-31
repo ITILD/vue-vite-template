@@ -3,7 +3,7 @@ from config.log import console
 # lib
 from functools import wraps
 # from sqlalchemy import create_engine
-import aiosqlite # 依赖写全防止找不到
+# import aiosqlite # 依赖写全防止找不到
 from sqlmodel import create_engine, Session
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlmodel.ext.asyncio.session import AsyncSession
@@ -40,7 +40,7 @@ from sqlalchemy.pool import QueuePool
 
 
 engine = create_async_engine( 
-                       'sqlite+aiosqlite:///users.db', 
+                       'sqlite+aiosqlite:///source/db/users.db', 
                        echo=True, # 控制台打印SQL
                        # 连接池
                        poolclass=QueuePool,

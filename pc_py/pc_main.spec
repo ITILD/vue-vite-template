@@ -2,11 +2,11 @@
 
 
 a = Analysis(
-    ['src\\main.py'],
+    ['src\\pc_main.py','../server_py/src/server_main.py'],
     pathex=[],
     binaries=[],
-    datas=[('source', '.')],
-    hiddenimports=[],
+    datas=[('../server_py/source', 'source'),('pc_source','pc_source')],
+    hiddenimports=['aiosqlite'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -20,7 +20,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='main',
+    name='code_tm_pc_py',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -31,7 +31,8 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['source\\img\\ion\\favicon.ico'],
+    icon=['pc_source\\img\\ion\\pc_favicon64.ico'],
+    contents_directory='.',
 )
 coll = COLLECT(
     exe,
@@ -40,5 +41,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='main',
+    name='code_tm_pc_py',
 )
