@@ -10,27 +10,27 @@ conda env list
 conda config --append channels conda-forge
 
 # 初始环境
-conda create -n test_all python=3.10 
+conda create -n server_py python=3.10 
 
 # 进入环境
-conda activate test_all
+conda activate server_py
 ```
 
 ### lib
 
 ```sh
 # server
-conda install uvicorn
+pip3 install uvicorn
 # web框架
-conda install fastapi
+pip3 install fastapi
 # 数据库对象和程序对象序列化反序列化关联    SQLModel 基于 Pydantic(自动安装) 和 SQLAlchemy(自动安装)
-conda install sqlmodel
+pip3 install sqlmodel
 # 上传文件等
-conda install python-multipart
+pip3 install python-multipart
 # 异步sqlite aiofiles
-conda install aiosqlite aiofiles
+pip3 install aiosqlite aiofiles
 # full server
-conda install uvicorn fastapi sqlmodel python-multipart aiosqlite aiofiles
+pip3 install uvicorn fastapi sqlmodel python-multipart aiosqlite aiofiles
 
 # 导出
 conda env export > environment.yaml
@@ -46,7 +46,7 @@ conda remove -n rcnn --all
 
 ```sh
 # 进入环境
-conda activate test_all
+conda activate server_py
 # 查看python 路径 
 which python # linux
 where.exe python # windows
