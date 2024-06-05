@@ -19,18 +19,19 @@ conda activate server_py
 ### lib
 
 ```sh
+# conda 包太老
 # server
-conda install uvicorn
+pip3 install uvicorn
 # web框架
-conda install fastapi
+pip3 install fastapi
 # 数据库对象和程序对象序列化反序列化关联    SQLModel 基于 Pydantic(自动安装) 和 SQLAlchemy(自动安装)
-conda install sqlmodel
+pip3 install sqlmodel
 # 上传文件等
-conda install python-multipart
+pip3 install python-multipart
 # 异步sqlite aiofiles
-conda install aiosqlite aiofiles
+pip3 install aiosqlite aiofiles
 # full server
-conda install uvicorn fastapi sqlmodel python-multipart aiosqlite aiofiles
+pip3 install uvicorn fastapi sqlmodel python-multipart aiosqlite aiofiles
 
 # 导出
 conda env export > environment.yaml
