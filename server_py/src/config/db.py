@@ -42,12 +42,6 @@ from sqlalchemy.pool import QueuePool
 engine = create_async_engine( 
                        'sqlite+aiosqlite:///source/db/users.db', 
                        echo=True, # 控制台打印SQL
-                       # 连接池
-                       poolclass=QueuePool,
-                       # 大小为5，超时30秒，连接重置时间为3600秒
-                       pool_size=5,
-                       pool_timeout=30,
-                       pool_recycle=3600
                        )
         
 def Data(f):
