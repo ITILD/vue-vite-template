@@ -11,9 +11,12 @@ from pc_config.pyvebview_config import window # 窗口
 from pc_controller import index,window_index
 import uvicorn,threading
 print(parent_path)
+
 '''server'''
 # 启动FastAPI服务 daemon守护线程,整个python程序退出时自动卸载
-threading.Thread(target=uvicorn.run, args=(app,), kwargs={"host":"localhost","port": port_no_used},daemon=True).start()
+threading.Thread(target=uvicorn.run, args=(app,), 
+                 kwargs={"host":"localhost","port": port_no_used},daemon=True).start()
+
 '''pc'''
 import webview
 webview.start()
