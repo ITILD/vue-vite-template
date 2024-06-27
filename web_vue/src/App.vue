@@ -14,8 +14,8 @@ import SysFooter from '@/components/app/sys/SysFooter.vue'
 // 考虑单页100% canvas类页面   可以设置标头显隐
 // 考虑无限制地图类分块类   123
 
-console.log('VITE_ENV',import.meta.env.VITE_ENV);
-console.log('VITE_SOME_KEY',import.meta.env.VITE_SOME_KEY);
+console.log('VITE_ENV', import.meta.env.VITE_ENV)
+console.log('VITE_SOME_KEY', import.meta.env.VITE_SOME_KEY)
 </script>
 
 <style>
