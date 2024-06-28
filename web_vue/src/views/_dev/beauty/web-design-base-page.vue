@@ -2,10 +2,10 @@
   <div>
     <!-- 基础页面纸张 -->
     <!-- 混合仿纸质 1-->
-    <ul class="grid grid-cols-1 md:grid-cols-8">
+    <ul grid grid-cols-1 md:grid-cols-9>
       <li>
         <div w-full class="aspect-[9/5] md:aspect-[9/16]">
-          <div class="w-full h-full layer11"></div>
+          <div w-full h-full class="layer11"></div>
         </div>
         <p>
           <span>.layer1</span>
@@ -13,46 +13,48 @@
       </li>
       <li>
         <div class="w-full aspect-[9/5] md:aspect-[9/16]">
-          <div class="w-full h-full layer12"></div>
+          <div w-full h-full class="layer12"></div>
         </div>
         <p>
           <span>.layer1无混合</span>
         </p>
       </li>
       <li>
-        <div class="w-full relative aspect-[9/5] md:aspect-[9/16]">
-          <div class="w-full h-full absolute layer11"></div>
-          <div class="w-full h-full layer12 mix-blend-overlay"></div>
+        <div w-full relative  class="aspect-[9/5] md:aspect-[9/16]">
+          <div w-full h-full absolute class="layer11"></div>
+          <div w-full h-full mix-blend-overlay class="layer12"></div>
         </div>
         <p>
           <span>.layer1混合仿纸</span>
         </p>
       </li>
-    </ul>
-    <!--  -->
-    <!--混合仿纸质 2-->
-    <ul class="grid grid-cols-1 md:grid-cols-8">
+      <!-- </ul> -->
+      <!--  -->
+      <!--混合仿纸质 2-->
+      <!-- <ul class="grid grid-cols-1 md:grid-cols-8"> -->
       <li>
         <div class="w-full aspect-[9/5] md:aspect-[9/16]">
-          <div class="w-full h-full layer21"></div>
+          <div w-full h-full class="layer21"></div>
         </div>
         <p>
           <span>.layer2</span>
         </p>
       </li>
       <li>
-        <div class="w-full aspect-[9/5] md:aspect-[9/16]">
-          <div class="w-full h-full bg-no-repeat bg-center bg-contain layer22"></div>
+        <div w-full class="aspect-[9/5] md:aspect-[9/16]">
+          <div w-full h-full bg-no-repeat bg-center bg-contain class=" layer22"></div>
         </div>
         <p>
           <span>.layer2无混合</span>
         </p>
       </li>
       <li>
-        <div class="w-full aspect-[9/5] relative md:aspect-[9/16]">
-          <div class="w-full h-full absolute layer21"></div>
+        <div w-full relative  class="aspect-[9/5]  md:aspect-[9/16]">
+          <div w-full h-full class="absolute layer21"></div>
           <div
-            class="w-full h-full layer22 mix-blend-overlay bg-no-repeat bg-center bg-contain"
+            w-full
+            h-full
+            class="layer22 mix-blend-overlay bg-no-repeat bg-center bg-contain"
           ></div>
         </div>
         <p>
@@ -92,4 +94,29 @@ onBeforeUnmount(() => {})
   background-image: url('@/assets/lib/_dev/beauty/waves.webp'),
     linear-gradient(to bottom right, hsla(0, 0%, 0%, 0) 40%, hsla(0, 0%, 0%, 1));
 }
+
+
+/* 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.layer1 {
+  --img: url(https://garden.bradwoods.io/images/waves.webp);
+
+  width: 100%;
+  aspect-ratio: 1;
+
+  filter: brightness(2) invert(1) grayscale(1);
+
+  background-image: var(--img), var(--img), var(--img);
+  background-size: cover;
+  background-position: calc(50% - 1px) calc(50% - 1px),
+    calc(50% + 1px) calc(50% + 1px), center;
+  background-blend-mode: difference, screen;
+} */
+/* https://garden.bradwoods.io/notes/css/blend-modes */
+/* background-repeat: repeat; */
 </style>
