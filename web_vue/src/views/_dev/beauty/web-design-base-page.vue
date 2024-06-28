@@ -4,7 +4,7 @@
     <!-- 混合仿纸质 1-->
     <ul class="grid grid-cols-1 md:grid-cols-8">
       <li>
-        <div class="w-full aspect-[9/5] md:aspect-[9/16]">
+        <div w-full class="aspect-[9/5] md:aspect-[9/16]">
           <div class="w-full h-full layer11"></div>
         </div>
         <p>
@@ -74,6 +74,7 @@ onBeforeUnmount(() => {})
 <style scoped>
 .layer11 {
   background: hsl(40, 35%, 76%);
+  /* background: hsl(68, 35%, 76%); */
 }
 .layer12 {
   box-shadow: inset 0 0 40px 10px hsla(0, 0%, 0%, 0.8);
