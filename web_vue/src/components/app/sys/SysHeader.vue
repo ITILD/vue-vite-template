@@ -110,7 +110,7 @@
                 </button>
                 <MinPopover v-model="isSysSettingShow">
                   <ShowHidden v-show="isSysSettingShow">
-                    <SysSetting></SysSetting>
+                    <SysSetting absolute z-1 md:right-5/>
                   </ShowHidden>
                 </MinPopover>
               </li>
