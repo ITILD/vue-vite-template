@@ -34,6 +34,9 @@ const routerDev = [
   { path: '/_dev/template/multiClickAndShow', component: () => import('@/views/_dev/template/multiClickAndShow.vue') },
   { path: '/_dev/template/staticShow', component: () => import('@/views/_dev/template/staticShow.vue') },
   { path: '/_dev/template/vscodeTips', component: () => import('@/views/_dev/template/vscodeTips.vue') },
+  // a_test
+  { path: '/_dev/a_test/short-test-page', component: () => import('@/views/_dev/a_test/short-test-page.vue')},
+  { path: '/_dev/a_test/sittime-async', component: () => import('@/views/_dev/a_test/sittime-async.vue')},
   // 路由首页
   { path: '/_dev', component: () => import('@/views/_dev/index-page.vue') }
 ]

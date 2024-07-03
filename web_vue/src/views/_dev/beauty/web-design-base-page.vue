@@ -2,7 +2,7 @@
   <div>
     <!-- 基础页面纸张 -->
     <!-- 混合仿纸质 1-->
-    <ul grid grid-cols-1 md:grid-cols-9>
+    <ul grid grid-cols-1 md:grid-cols-6>
       <li>
         <div w-full class="aspect-[9/5] md:aspect-[9/16]">
           <div w-full h-full class="layer11"></div>
@@ -20,7 +20,7 @@
         </p>
       </li>
       <li>
-        <div w-full relative  class="aspect-[9/5] md:aspect-[9/16]">
+        <div w-full relative class="aspect-[9/5] md:aspect-[9/16]">
           <div w-full h-full absolute class="layer11"></div>
           <div w-full h-full mix-blend-overlay class="layer12"></div>
         </div>
@@ -32,7 +32,7 @@
       <!--  -->
       <!--混合仿纸质 2-->
       <!-- <ul class="grid grid-cols-1 md:grid-cols-8"> -->
-      <li>
+      <!-- <li>
         <div class="w-full aspect-[9/5] md:aspect-[9/16]">
           <div w-full h-full class="layer21"></div>
         </div>
@@ -42,19 +42,23 @@
       </li>
       <li>
         <div w-full class="aspect-[9/5] md:aspect-[9/16]">
-          <div w-full h-full bg-no-repeat bg-center bg-contain class=" layer22"></div>
+          <div w-full h-full bg-no-repeat bg-center bg-contain class="layer22"></div>
         </div>
         <p>
           <span>.layer2无混合</span>
         </p>
-      </li>
+      </li> -->
       <li>
-        <div w-full relative  class="aspect-[9/5]  md:aspect-[9/16]">
-          <div w-full h-full class="absolute layer21"></div>
+        <div w-full relative class="aspect-[9/5] md:aspect-[9/16]">
+          <div w-full h-full absolute class="layer21"></div>
           <div
             w-full
             h-full
-            class="layer22 mix-blend-overlay bg-no-repeat bg-center bg-contain"
+            mix-blend-overlay
+            bg-no-repeat
+            bg-center
+            bg-contain
+            class="layer22"
           ></div>
         </div>
         <p>
@@ -94,7 +98,6 @@ onBeforeUnmount(() => {})
   background-image: url('@/assets/lib/_dev/beauty/waves.webp'),
     linear-gradient(to bottom right, hsla(0, 0%, 0%, 0) 40%, hsla(0, 0%, 0%, 1));
 }
-
 
 /* 
 * {

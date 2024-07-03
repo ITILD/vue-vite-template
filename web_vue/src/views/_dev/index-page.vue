@@ -270,7 +270,21 @@ const routerAll = reactive({
               url: '/_dev/libBase/tf-start'
             }
           ]
-        }
+        },
+        {
+          img: '',
+          name: '基础测试',
+          child: [
+          {
+              name: '基础模板页面',
+              url: '/_dev/a_test/short-test-page'
+            },
+          {
+              name: '同步setTime测试',
+              url: '/_dev/a_test/sittime-async'
+            },
+          ]
+        },
       ]
     },
   ]
