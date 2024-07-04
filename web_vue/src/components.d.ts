@@ -29,6 +29,7 @@ declare module 'vue' {
     SysSetting: typeof import('./components/app/sys/head/SysSetting.vue')['default']
     TauriGreet: typeof import('./components/template/TauriGreet.vue')['default']
     TemplateComponent: typeof import('./components/app/sampleUtils/music/TemplateComponent.vue')['default']
+    TemplateComponent_00: typeof import('./components/app/sampleUtils/ocr/TemplateComponent_00.vue')['default']
     Test: typeof import('./components/app/sys/setting/test.vue')['default']
     WaitAnimate: typeof import('./components/app/sampleUtils/state/WaitAnimate.vue')['default']
   }
