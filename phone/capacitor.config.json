@@ -1,0 +1,10 @@
+{
+  "appId": "com.example.app",
+  "appName": "cap_vue",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
