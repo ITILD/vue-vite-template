@@ -1,12 +1,12 @@
-## Created with Capacitor Create App
+# web
+Vue 3 in Vite.
+通用ui部分,当前工程默认浏览器端web
 
-This app was created using [`@capacitor/create-app`](https://github.com/ionic-team/create-capacitor-app),
-and comes with a very minimal shell for building an app.
+考虑pywebview和PWA模式,手机端考虑flutter封装web
 
-### Running this example
+## 下载依赖
 
-To run the provided example, you can use `npm start` command.
-
-```bash
-npm start
+```sh
+pnpm install
 ```
+
