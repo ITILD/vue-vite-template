@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MainPage from '@/views/index-page.vue'
+import home_page from '@/views/home_page.vue'
 import { routerDev } from './_dev'
 const routes = [
-  { path: '/', component: MainPage },
+  { path: '/', component: home_page },
   // 开发测试
   ...routerDev
 ]

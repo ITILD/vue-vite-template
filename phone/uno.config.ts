@@ -13,6 +13,8 @@ export default defineConfig({
   ],
   rules: [
     // 抽屉
+    ['m-1', { margin: '0.3rem' }],
+    ['grid-center', { 'grid-template-rows': 'auto minmax(0, 1fr) auto' }],
   ],
   shortcuts: {
     // CSS 后者具有更高的优先级
@@ -78,6 +80,7 @@ export default defineConfig({
     'full-fex': 'absolute w-full h-full flex',
     // 居中
     'position-center':
-      'absolute top-0 left-0 right-0 bottom-0 m-auto flex items-center justify-center'
+      'absolute top-0 left-0 right-0 bottom-0 m-auto flex items-center justify-center',
+    'grid-head-center-foot': 'min-h-full grid grid-center',
   }
 })

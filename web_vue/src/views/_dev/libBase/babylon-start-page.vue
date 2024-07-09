@@ -11,18 +11,18 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount } from 'vue'
 // import {Engine,Scene,ArcRotateCamera,Vector3,HemisphericLight,PointLight,MeshBuilder} from 'babylonjs';
-import * as BABYLON from '@babylonjs/core/Legacy/legacy'
+import * as BABYLON from 'babylonjs'
 let scene: BABYLON.Scene
 let engine: BABYLON.Engine
 let camera: BABYLON.FreeCamera
 // vue
 onMounted(() => {
   initMap()
-  window.$ObjLargeTemp.set('scene', scene)
+  // window.$ObjLargeTemp.set('scene', scene)
 })
 onBeforeUnmount(() => {
   scene && scene.dispose()
-  window.$ObjLargeTemp.delete('scene')
+  // window.$ObjLargeTemp.delete('scene')
 })
 const initMap = () => {
   // Get the canvas DOM element

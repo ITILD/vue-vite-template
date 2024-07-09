@@ -14,7 +14,7 @@
       <div  v-show="showFun">              
     const showFun = ref(false)
  */
-import { ref, watch } from 'vue'
+
 // 传入值
 const model = defineModel({ type: Boolean, required: false })
 // 组件内监听点击

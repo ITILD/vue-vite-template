@@ -1,21 +1,6 @@
 <template>
   <div w-full h-full>
     <!-- 重要路由 -->
-    <div class="grid grid-cols-5">
-      <template v-for="L1 in routerAll.rootMain" :key="L1.name">
-        <template v-if="L1.child">
-          <div
-            v-for="L2 in L1.child"
-            :key="L2.name"
-            class="h-96 border border-gray-200 hover:invert"
-          >
-            <!-- 图片链接 -->
-            <!-- 名字 todo 介绍-->
-            <h2 class="text-lg bg-blue-300">{{ L1.name + ' ' + L2.name }}</h2>
-          </div>
-        </template>
-      </template>
-    </div>
     <!-- 所有路由 -->
     <div>
       <template v-for="L1 in routerAll.rootAll" :key="L1.name">
@@ -102,10 +87,10 @@ const routerAll = reactive({
       child: [
         {
           img: '',
-          name: 'beauty',
+          name: '插件测试',
           child: [
             {
-              name: '网页底板设计基础',
+              name: '平板摄像头测试',
               url: '/_dev/beauty/web-design-base'
             },
             {
@@ -117,120 +102,8 @@ const routerAll = reactive({
         {
           // L2
           img: '',
-          name: 'amazing',
+          name: '组件样式',
           child: []
-        },
-        {
-          img: '',
-          name: 'template',
-          child: [
-            {
-              name: '通用vue组件基础',
-              url: '/_dev/template/componentBase'
-            },
-            {
-              name: '通用vue组件tailwindcss',
-              url: '/_dev/template/componentTailwindcss'
-            },
-            {
-              name: '多按钮展示模板',
-              url: '/_dev/template/multiClickAndShow'
-            },
-            {
-              name: '多格静态展示',
-              url: '/_dev/template/staticShow'
-            },
-            {
-              name: 'vscode的vue基础模板',
-              url: '/_dev/template/vscodeTips'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'DevTool',
-      child: [
-        {
-          img: '',
-          name: '环境配置',
-          child: []
-        },
-        {
-          img: '',
-          name: 'web jslib引入',
-          child: [
-            {
-              name: 'babylon引入',
-              url: '/_dev/libBase/babylon-start'
-            },
-            {
-              name: 'cesium引入',
-              url: '/_dev/libBase/cesium-start'
-            },
-            {
-              name: 'jsts(jts)引入',
-              url: '/_dev/libBase/jsts-start'
-            },
-            {
-              name: 'marked-引入',
-              url: '/_dev/libBase/marked-start'
-            },
-            {
-              name: 'mediapipe人脸识别引入',
-              url: '/_dev/libBase/mediapipe-start'
-            },
-            {
-              name: 'monaco引入',
-              url: '/_dev/libBase/monaco-start'
-            },
-            {
-              name: 'opencv引入',
-              url: '/_dev/libBase/opencv-start'
-            },
-            //
-            {
-              name: '原生webgl',
-              url: '/_dev/libBase/webgl-start'
-            },
-
-            {
-              name: 'openlayer引入',
-              url: '/_dev/libBase/openlayer-start'
-            },
-
-            {
-              name: 'threejs引入',
-              url: '/_dev/libBase/threejs-start'
-            },
-
-            {
-              name: 'pina引入',
-              url: '/_dev/libBase/pina-start'
-            },
-            {
-              name: 'videojs引入',
-              url: '/_dev/libBase/video-js-start'
-            },
-            {
-              name: 'tf引入',
-              url: '/_dev/libBase/tf-start'
-            }
-          ]
-        },
-        {
-          img: '',
-          name: '基础测试',
-          child: [
-            {
-              name: '基础模板页面',
-              url: '/_dev/a_test/short-test-page'
-            },
-            {
-              name: '同步setTime测试',
-              url: '/_dev/a_test/sittime-async'
-            }
-          ]
         }
       ]
     }

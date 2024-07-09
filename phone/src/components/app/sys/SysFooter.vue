@@ -1,5 +1,7 @@
 <template>
   <footer p-4 py-6 lg:py-8  >
+    <div>图标</div>
+    <div>输入</div>
   </footer>
 </template>
 

@@ -4,13 +4,17 @@ import { defineConfig, presetAttributify, presetUno } from 'unocss'
 export default defineConfig({
   presets: [
     // 直接在标签写
-    presetAttributify({ /* preset options */ }),
+    presetAttributify({
+      /* preset options */
+    }),
     // taiwindcss等规则
-    presetUno(),
+    presetUno()
     // ...custom presets
   ],
   rules: [
     // 抽屉
+    ['m-1', { margin: '0.3rem' }],
+    ['grid-center', { 'grid-template-rows': 'auto minmax(0, 1fr) auto' }]
   ],
   shortcuts: {
     // CSS 后者具有更高的优先级
@@ -46,6 +50,10 @@ export default defineConfig({
     'bg-danger-2': 'bg-gray-200 dark:bg-red-800 text-red-800 dark:text-gray-200',
     'bg-danger-3': 'bg-gray-300 dark:bg-red-700 text-red-700 dark:text-gray-300',
     'bg-danger-4': 'bg-gray-400 dark:bg-red-600 text-red-600 dark:text-gray-400',
+    // 半透明
+    'bg-deep-0-op35': 'bg-gray-50/35 dark:bg-gray-950/35 text-deep-0',
+    'bg-deep-1-op35': 'bg-gray-100/35 dark:bg-gray-900/35 text-deep-1',
+    'bg-deep-2-op35': 'bg-gray-200/35 dark:bg-gray-800/35 text-deep-2',
     // 前景色 标识线等
     'fbg-deep-0': 'bg-gray-50 dark:bg-gray-950',
     'fbg-deep-1': 'bg-gray-100 dark:bg-gray-900',
@@ -71,6 +79,9 @@ export default defineConfig({
      */
     'full-fex': 'absolute w-full h-full flex',
     // 居中
-    'position-center': 'absolute top-0 left-0 right-0 bottom-0 m-auto flex items-center justify-center',
+    'position-center': 'absolute top-0 left-0 right-0 bottom-0  m-auto',
+    //flex 内容居中  flex items-center justify-center
+    // 主页三段布局
+    'grid-head-center-foot': 'min-h-full grid grid-center'
   }
 })

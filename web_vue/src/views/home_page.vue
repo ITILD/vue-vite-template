@@ -1,5 +1,10 @@
 <template>
-  <main class="bg-white dark:bg-gray-2 m-5">test</main>
+    <div grid-head-center-foot>
+    <SysHeader />
+    <main class="bg-white dark:bg-gray-2 m-5">test</main>
+    <SysFooter />
+  </div>
+
 </template>
 
 <script setup lang="ts">

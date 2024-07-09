@@ -1,5 +1,9 @@
 <template>
-  <main w-full h-full bg-deep-2 >test</main>
+  <div grid-head-center-foot>
+    <SysHeader bg-deep-1-op35 />
+    <main w-full bg-deep-2>test</main>
+    <SysFooter bg-deep-1 />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -10,4 +14,5 @@ const { sysStyle } = storeToRefs(SysSettingStore())
 sysStyle.value.headShow = true
 console.log('跳转')
 </script>
-<style scoped></style>
+<style scoped>
+</style>

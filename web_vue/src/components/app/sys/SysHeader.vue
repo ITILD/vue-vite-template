@@ -3,8 +3,8 @@
   <header v-show="sysStyle.headShow" bg-deep-1>
     <div flex flex-wrap justify-between items-center mx-auto p-4>
       <router-link to="/" class="flex items-center">
-        <img src="@/assets/star.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap">ITILD</span>
+        <img src="@/assets/img/ion/sy_w.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap">XYZ</span>
       </router-link>
       <!-- 网站导航栏 -->
       <!-- 小屏幕设备 下拉列表开关 -->

@@ -10,6 +10,7 @@ declare module 'vue' {
     AsyncInfoErrorPopup: typeof import('./components/app/popup/AsyncInfoErrorPopup.vue')['default']
     AsyncLoginPopup: typeof import('./components/app/popup/AsyncLoginPopup.vue')['default']
     BaseTable: typeof import('./components/common/minUi/table/BaseTable.vue')['default']
+    copy: typeof import('./components/app/sys/head/SysSetting copy.vue')['default']
     Func_1: typeof import('./components/app/sys/head/Func_1.vue')['default']
     MinOption: typeof import('./components/common/minUi/dropdowns/min-option.vue')['default']
     MinPopover: typeof import('./components/common/minUi/button/MinPopover.vue')['default']
@@ -28,6 +29,7 @@ declare module 'vue' {
     TemplateComponent: typeof import('./components/app/sampleUtils/music/TemplateComponent.vue')['default']
     TemplateComponent_00: typeof import('./components/app/sampleUtils/ocr/TemplateComponent_00.vue')['default']
     Test: typeof import('./components/app/sys/setting/test.vue')['default']
+    UserControl: typeof import('./components/app/sys/head/UserControl.vue')['default']
     WaitAnimate: typeof import('./components/app/sampleUtils/state/WaitAnimate.vue')['default']
   }
 }
