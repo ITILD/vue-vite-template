@@ -41,7 +41,7 @@
         items-center justify-between w-full md:w-auto md:order-1
       >
         <ShowHidden>
-          <span v-show="isMenuOpen || isMd || showFun1">
+          <span v-show="isMenuOpen || sysStyle.isMd || showFun1">
             <ul flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0>
               <li>
                 <RouterLink
@@ -98,6 +98,23 @@
                   >_开发测试</router-link
                 >
               </li>
+             <!-- 用户头像 -->
+             <li>
+                <button
+                  @click="isUserControlShow = !isUserControlShow"
+                  id="mega-menu-full-cta-image-button"
+                  data-collapse-toggle="mega-menu-full-image-dropdown"
+                  class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                >
+                  用户图标
+                </button>
+
+                <MinPopover v-model="isUserControlShow">
+                  <ShowHidden v-show="isUserControlShow">
+                    <UserControl absolute z-1 md:right-10 />
+                  </ShowHidden>
+                </MinPopover>
+              </li>
               <!-- setting -->
               <li>
                 <button
@@ -108,11 +125,22 @@
                 >
                   设置
                 </button>
-                <MinPopover v-model="isSysSettingShow">
+                <SimplePopover absolute left-0 top-0 w-full h-full  :show="isSysSettingShow" :bg="true">
                   <ShowHidden v-show="isSysSettingShow">
-                    <SysSetting absolute z-1 md:right-5/>
+                    <div
+                      z-99
+                      position-center
+                      rounded-lg
+                      p-2
+                      text-xl
+                      bg-deep-0
+                      class="w-4/5 h-4/5 border"
+                    >
+                      <button @click="isSysSettingShow = !isSysSettingShow">X</button>
+                      <SysSetting />
+                    </div>
                   </ShowHidden>
-                </MinPopover>
+                </SimplePopover>
               </li>
             </ul>
           </span>
@@ -130,18 +158,17 @@ import Func_1 from './head/Func_1.vue'
 import SysSetting from './head/SysSetting.vue'
 import ShowHidden from '@/components/common/minUi/animation/ShowHidden.vue'
 // 显隐控制
-import { storeToRefs } from 'pinia'
 import { SysSettingStore } from '@/stores/sys'
 const sysSettingStore = SysSettingStore()
 // 样式控制
 const sysStyle = sysSettingStore.sysStyle
 // 小屏幕下拉列表
 const isMenuOpen = ref(false)
-// 
-const isMd = ref(window.innerWidth > sysStyle.$MS.md)
-window.onresize = () => (isMd.value = window.innerWidth > sysStyle.$MS.md)
+//
+
 const showFun1 = ref(false)
 const isSysSettingShow = ref(false)
+const isUserControlShow = ref(false)
 </script>
 
 <style></style>

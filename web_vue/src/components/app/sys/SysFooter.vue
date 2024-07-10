@@ -1,6 +1,6 @@
 <template>
-  <footer mx-auto w-full p-4 py-6 lg:py-8  bg-deep-1>
-    <hr mb-2 border-gray-200 sm:mx-auto dark:border-gray-5 lg:mb-7 />
+  <footer mx-auto w-full p-2  lg:py-2  bg-deep-1>
+    <hr  border-gray-200 sm:mx-auto dark:border-gray-5 lg:mb-2 />
     <!-- 关联账号 本站 备案 -->
     <div sm:flex sm:items-center sm:justify-between>
       <!-- 关联账号 -->
@@ -24,7 +24,7 @@
         Reserved.<br />
       </span>
       <!-- 备案 -->
-      <span text-sm text-gray-500 sm:text-center dark:text-gray-400
+      <span text-xs text-gray-500 sm:text-center dark:text-gray-400
         >© 备案号: <a href="https://beian.miit.gov.cn/" target="_blank">辽ICP备2022000388号-1</a>
       </span>
     </div>
