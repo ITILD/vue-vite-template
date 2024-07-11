@@ -15,6 +15,7 @@ declare module 'vue' {
     Component: typeof import('./components/template/Component.vue')['default']
     copy: typeof import('./components/common/minUi/menu/MenuGroup copy.vue')['default']
     Func_1: typeof import('./components/app/sys/head/Func_1.vue')['default']
+    LanguageChange: typeof import('./components/app/sys/setting/LanguageChange.vue')['default']
     MenuGroup: typeof import('./components/common/minUi/menu/MenuGroup.vue')['default']
     MenuTree: typeof import('./components/common/minUi/menu/MenuTree.vue')['default']
     MinOption: typeof import('./components/common/minUi/dropdowns/min-option.vue')['default']
