@@ -1,6 +1,6 @@
 <template>
     <div grid-head-center-foot>
-    <SysHeader />
+    <SysHeader h-14 />
     <main class="bg-white dark:bg-gray-2 m-5">test</main>
     <SysFooter />
   </div>

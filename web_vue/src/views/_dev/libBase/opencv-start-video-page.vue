@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount } from 'vue'
-import { loadJsDll } from '@/components/common/miniEx/utils/jsDll'
+import { loadJsDll } from '@/components/common/miniExtension/utils/jsDll'
 // vue
 onMounted(() => {
   initMap()

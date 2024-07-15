@@ -7,16 +7,19 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppRoot: typeof import('./components/app/sys/AppRoot.vue')['default']
     AsyncInfoErrorPopup: typeof import('./components/app/popup/AsyncInfoErrorPopup.vue')['default']
     AsyncLoginPopup: typeof import('./components/app/popup/AsyncLoginPopup.vue')['default']
     BaseTable: typeof import('./components/common/minUi/table/BaseTable.vue')['default']
+    Charge_manager: typeof import('./components/app/sys/setting/charge_manager.vue')['default']
     CommonHeader: typeof import('./components/common/minUi/Layout/CommonHeader.vue')['default']
     CommonHeader1: typeof import('./components/common/minUi/Layout/CommonHeader1.vue')['default']
     Component: typeof import('./components/template/Component.vue')['default']
-    copy: typeof import('./components/common/minUi/menu/MenuGroup copy.vue')['default']
+    copy: typeof import('./components/app/sys/SysHeader copy.vue')['default']
     Func_1: typeof import('./components/app/sys/head/Func_1.vue')['default']
     LanguageChange: typeof import('./components/app/sys/setting/LanguageChange.vue')['default']
     MenuGroup: typeof import('./components/common/minUi/menu/MenuGroup.vue')['default']
+    MenuTabs: typeof import('./components/common/minUi/menu/MenuTabs.vue')['default']
     MenuTree: typeof import('./components/common/minUi/menu/MenuTree.vue')['default']
     MinOption: typeof import('./components/common/minUi/dropdowns/min-option.vue')['default']
     MinPopover: typeof import('./components/common/minUi/button/MinPopover.vue')['default']
@@ -33,6 +36,7 @@ declare module 'vue' {
     SimpleHeader: typeof import('./components/common/minUi/Layout/SimpleHeader.vue')['default']
     SimplePopover: typeof import('./components/common/minUi/button/SimplePopover.vue')['default']
     StateLoading: typeof import('./components/common/minUi/animation/StateLoading.vue')['default']
+    Style_test0: typeof import('./components/common/minUi/_todo/style_test0.vue')['default']
     SysFooter: typeof import('./components/app/sys/SysFooter.vue')['default']
     SysHeader: typeof import('./components/app/sys/SysHeader.vue')['default']
     SysSetting: typeof import('./components/app/sys/head/SysSetting.vue')['default']

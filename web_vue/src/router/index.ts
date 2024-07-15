@@ -3,6 +3,7 @@ import home_page from '@/views/home_page.vue'
 import { routerDev } from './_dev'
 import { routerBlog } from './blog'
 const routes = [
+  // 首页同步
   { path: '/', component: home_page },
   // blog
   ...routerBlog,

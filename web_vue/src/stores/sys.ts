@@ -29,7 +29,9 @@ const SysSettingStore = defineStore('sysSetting', () => {
     sysStyle.value.isMd = window.innerWidth > baseMd
   }
 
-  return { sysStyle, sysObj }
+  const isSysSettingShow = ref(false)
+
+  return { sysStyle, sysObj,isSysSettingShow }
 })
 
 export { SysSettingStore }
