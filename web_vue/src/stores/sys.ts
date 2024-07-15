@@ -17,7 +17,8 @@ const SysSettingStore = defineStore('sysSetting', () => {
       leftControl: {
         tabPosition: 'left'
       }
-    }
+    },
+    language: 'zh'
   })
 
   const sysObj = {
@@ -31,7 +32,8 @@ const SysSettingStore = defineStore('sysSetting', () => {
 
   const isSysSettingShow = ref(false)
 
-  return { sysStyle, sysObj,isSysSettingShow }
+  setInterval(() => console.log(sysStyle.value.language), 1000)
+  return { sysStyle, sysObj, isSysSettingShow }
 })
 
 export { SysSettingStore }

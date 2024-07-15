@@ -1,6 +1,6 @@
 import { createI18n } from 'vue-i18n'
 const i18n = createI18n({
-  locale: 'ja',
+  locale: 'zh',
   fallbackLocale: 'zh',
   messages: {}
 })
@@ -17,6 +17,14 @@ i18n.global.setLocaleMessage('ja', {
     language: '日語',
     //  欢迎使用方案讲解机器人
     home_welcome:'ロボットを説明するソリューションへようこそ',
+  }
+})
+i18n.global.setLocaleMessage('en', {
+  message: {
+    // '日本語試験'
+    language: 'language',
+    //  欢迎使用方案讲解机器人
+    home_welcome:'home_welcome',
   }
 })
 
