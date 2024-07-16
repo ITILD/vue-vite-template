@@ -1,21 +1,19 @@
 <template>
-  <footer mx-auto w-full p-2  lg:py-2  bg-deep-1>
-    <hr  border-gray-200 sm:mx-auto dark:border-gray-5 lg:mb-2 />
+  <footer mx-auto w-full p-2 lg:py-2 bg-deep-0>
+    <hr border-gray-200 sm:mx-auto dark:border-gray-5 lg:mb-2 />
     <!-- 关联账号 本站 备案 -->
     <div sm:flex sm:items-center sm:justify-between>
       <!-- 关联账号 -->
       <div text-gray-500 flex mt-4 space-x-6 sm:justify-center sm:mt-0>
-        <a href="#" hover:text-gray-900 dark:hover:text-white>
+        <a href="#" text-deep-5 hover:text-deep-3>
           <GmailSVG />
           <span sr-only>Gmail</span>
         </a>
-        <a href="#" hover:text-gray-900 dark:hover:text-white>
-          <GithubSVG />
-          <span sr-only>GitHub account</span>
+        <a href="#" text-deep-5 hover:text-deep-3>
+          <GithubSVG w-5 />
         </a>
-        <a href="#" hover:text-gray-900 dark:hover:text-white>
-          <DribbbleSVG />
-          <span sr-only>Dribbble account</span>
+        <a href="#" text-deep-5 hover:text-deep-3>
+          <DribbbleSVG w-5 />
         </a>
       </div>
       <!-- 年份提示 -->
@@ -32,9 +30,9 @@
 </template>
 
 <script setup lang="ts">
-import GithubSVG from '@/assets/img/svg/GithubSVG.vue'
-import DribbbleSVG from '@/assets/img/svg/DribbbleSVG.vue'
-import GmailSVG from '@/assets/img/svg/GmailSVG.vue'
+import GithubSVG from '@/components/common/miniSvg/GithubSVG.vue'
+import DribbbleSVG from '@/components/common/miniSvg/DribbbleSVG.vue'
+import GmailSVG from '@/components/common/miniSvg/GmailSVG.vue'
 const yearNow = new Date().getFullYear()
 </script>
 

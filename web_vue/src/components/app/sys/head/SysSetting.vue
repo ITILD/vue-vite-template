@@ -1,51 +1,51 @@
 <template>
-  <div >
+  <div>
     <!-- 黑白主题 -->
-    <div flex >
-      <div>主题:</div>
-      <select v-model="theme.themeValue" @change="changeThemeValue" bg-deep-2>
-        <!-- <option disabled value="">Please select one</option> -->
-        <option v-for="item in themeOptions" :key="item.value" :label="item.label" :value="item.value" />
-      </select>
-    </div>
-    <!-- 黑白主题 -->
-    <div flex >
-      <div>{{ $t('message.language') }}:</div>
-      <select v-model="sysStyle.language" @change="i18n.global.locale = sysStyle.language" bg-deep-2>
-        <!-- <option disabled value="">Please select one</option> -->
-        <option v-for="item in languageOptions" :key="item.value" :label="item.label" :value="item.value" />
-      </select>
-    </div>
-
+    <BaseSelect
+      w-70
+      h-21
+      m-2
+      v-model="theme.themeValue"
+      :name="$t('theme')"
+      :options="themeOptions"
+      :changeValueFunc="changeThemeValue"
+    />
+    <!-- 语言选择 -->
+    <BaseSelect
+      w-70
+      h-21
+      m-2
+      v-model="sysStyle.language"
+      :name="$t('language')"
+      :options="languageOptions"
+      :changeValueFunc="(i18n.global.locale = sysStyle.language)"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
+// import { storeToRefs } from 'pinia'
 import { SysSettingStore } from '@/stores/sys'
- import { i18n } from '@/i18n/language'
-const { sysStyle } =SysSettingStore()
-
-
+import { i18n, languageOptions } from '@/i18n/language'
+const { sysStyle } = SysSettingStore()
 /////////////////////////////////////////////////////////主题控制/////////////////////////////////////////////////////////
+// 全局主题
 const theme = sysStyle.theme
-/**
- * 主题选择
- */
-const themeOptions = [
+// 主题选择
+const themeOptions = ref([
   {
     value: 'light',
-    label: '亮'
+    label: computed(() => i18n.global.t('light'))
   },
   {
     value: 'dark',
-    label: '暗'
+    label: computed(() => i18n.global.t('dark'))
   },
   {
     value: 'auto',
-    label: '跟随系统'
+    label: computed(() => i18n.global.t('autoSys'))
   }
-]
+])
 /**
  * 手动更改主题
  */
@@ -63,58 +63,6 @@ function changeThemeValue() {
       break
   }
 }
-/////////////////////////////////////////////////////////语言修改/////////////////////////////////////////////////////////
-/**
- * 主题选择
- */
-const languageOptions = [
-  {
-    value: 'zh',
-    label: '中文'
-  },
-  {
-    value: 'en',
-    label: 'English'
-  },
-  {
-    value: 'ja',
-    label: '日本語'
-  }
-]
-
-/**
- * 侧边栏方位设置
- */
-const optionsTabPosition = [
-  {
-    value: 'right',
-    label: '右侧'
-  },
-  {
-    value: 'left',
-    label: '左侧'
-    // disabled: true,
-  }
-]
-
-/**
- * 导航宽度
- */
-const num = ref(theme.head[0].height.replace('px', ''))
-const handleChange = (value: number) => {
-  theme.head[0].height = value + 'px'
-}
+/////////////////////////////////////////////////////////todo/////////////////////////////////////////////////////////
 </script>
-
-<style>
-.theme {
-  position: relative;
-  top: 20px;
-}
-
-.theme-one {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-left: 40px;
-}
-</style>
+<style scoped></style>

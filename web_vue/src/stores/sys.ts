@@ -18,7 +18,7 @@ const SysSettingStore = defineStore('sysSetting', () => {
         tabPosition: 'left'
       }
     },
-    language: 'zh'
+    language: 'zh' as any
   })
 
   const sysObj = {

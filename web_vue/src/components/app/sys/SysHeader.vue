@@ -32,26 +32,13 @@
 </template>
 
 <script setup lang="ts">
-import ListSVG from '@/assets/img/svg/ListSVG.vue'
-import { ref } from 'vue'
-import MinPopover from '@/components/common/minUi/button/MinPopover.vue'
-import Func_1 from './head/Func_1.vue'
-import SysSetting from './head/SysSetting.vue'
-import ShowHidden from '@/components/common/minUi/animation/ShowHidden.vue'
-//
-import UserSVG from '@/assets/img/svg/UserSVG.vue'
-// 显隐控制
+// 样式控制
 import { SysSettingStore } from '@/stores/sys'
 const sysSettingStore = SysSettingStore()
-// 样式控制
 const sysStyle = sysSettingStore.sysStyle
-// 小屏幕下拉列表
-const isMenuOpen = ref(false)
-//
-
-const showFun1 = ref(false)
-const isSysSettingShow = ref(false)
+// 显隐控制
 const isUserControlShow = ref(false)
+
 </script>
 
-<style></style>
+<style scoped></style>
