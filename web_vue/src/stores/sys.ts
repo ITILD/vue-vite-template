@@ -1,7 +1,4 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
 import { useDark } from '@vueuse/core'
-
 const SysSettingStore = defineStore('sysSetting', () => {
   // state
   const baseMd = 768
@@ -32,7 +29,6 @@ const SysSettingStore = defineStore('sysSetting', () => {
 
   const isSysSettingShow = ref(false)
 
-  setInterval(() => console.log(sysStyle.value.language), 1000)
   return { sysStyle, sysObj, isSysSettingShow }
 })
 

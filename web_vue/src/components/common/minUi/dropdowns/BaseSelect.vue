@@ -24,7 +24,6 @@
         :label="item.label"
         :value="item.value"
         bg-deep-4
-        p-20
       />
     </select>
   </div>

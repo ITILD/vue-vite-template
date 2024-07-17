@@ -67,6 +67,8 @@ export default defineConfig({
       'full-fex': 'absolute w-full h-full flex',
       // 居中
       'position-center': 'absolute top-0 left-0 right-0 bottom-0  m-auto',
+      // 水平居中分开两边
+       'mini-text-center-between': 'flex items-center justify-between',
       //flex 内容居中  flex items-center justify-center
       // 主页三段布局
       'grid-head-center-foot': 'min-h-full grid grid-center'

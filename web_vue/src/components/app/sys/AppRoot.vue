@@ -20,7 +20,7 @@
         bg-deep-1
         class="w-4/5 h-4/5 md:w-3/5 md:h-3/5"
       >
-        <!-- 关闭按钮 -->
+        <!-- 设置关闭按钮 -->
         <button
           absolute
           right-0
@@ -34,7 +34,8 @@
           <!-- 鲸鱼眼 四叶草 -->
           <Plant4LeafCloverSVG absolute right-0 top-0 m-3 w-7 />
         </button>
-        <SysSetting />
+        <!-- 设置列表 -->
+        <SysSettingIndex />
       </div>
     </ShowHidden>
   </SimplePopover>

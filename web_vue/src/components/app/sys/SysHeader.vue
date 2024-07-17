@@ -8,8 +8,9 @@
       </router-link>
       <!-- 空标题 可以加装饰 -->
       <span left-0 right-0 m-auto></span>
-      <!-- 网站导航栏 -->
-      <UserSVG @click="isUserControlShow = !isUserControlShow" />
+      <!-- 用户图标 -->
+      <UserLogin @click="isUserControlShow = !isUserControlShow" />
+      <!-- 点击用户图标下拉 导航栏-->
       <MinPopover v-model="isUserControlShow">
         <ShowHidden v-show="isUserControlShow">
           <UserControl
@@ -38,7 +39,6 @@ const sysSettingStore = SysSettingStore()
 const sysStyle = sysSettingStore.sysStyle
 // 显隐控制
 const isUserControlShow = ref(false)
-
 </script>
 
 <style scoped></style>

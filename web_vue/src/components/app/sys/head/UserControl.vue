@@ -2,14 +2,25 @@
   <div>
     <ul flex flex-col>
       <li>
-        <RouterLink to="/">XYZ</RouterLink>
+        <div mini-text-center-between>
+          <UserLogin />
+          <div>X</div>
+        </div>
       </li>
       <li>
         <button
           @click="showFun1 = !showFun1"
           id="mega-menu-full-cta-image-button"
           data-collapse-toggle="mega-menu-full-image-dropdown"
-          class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+          mini-text-center-between
+          w-full
+          p-2
+          text-gray-900
+          border-b
+          border-gray-200
+          dark:border-gray-500
+          bg-deep-0
+          hover:bg-deep-2
         >
           项目列表1
           <svg
@@ -29,7 +40,15 @@
           <ShowHidden>
             <div
               v-show="showFun1"
-              class="absolute z-10 grid grid-cols-3 rounded-lg p-2 w-11/12 text-xl bg-white border border-gray-100 dark:border-gray-700 dark:bg-gray-700 text-gray-900 md:pb-4 dark:text-white md:w-96 md:right-48 md:text-sm"
+              mini-text-center-between
+          w-full
+          p-2
+          text-gray-900
+          border-b
+          border-gray-200
+          dark:border-gray-500
+          bg-deep-0
+          hover:bg-deep-2
             >
               <Func_1></Func_1>
             </div>
@@ -39,14 +58,30 @@
       <li>
         <router-link
           to="/blog"
-          class="block py-2 pl-3 pr-4 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+          mini-text-center-between
+          w-full
+          p-2
+          text-gray-900
+          border-b
+          border-gray-200
+          dark:border-gray-500
+          bg-deep-0
+          hover:bg-deep-2
           >blog</router-link
         >
       </li>
       <li>
         <router-link
           to="/_dev"
-          class="block py-2 pl-3 pr-4 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+          mini-text-center-between
+          w-full
+          p-2
+          text-gray-900
+          border-b
+          border-gray-200
+          dark:border-gray-500
+          bg-deep-0
+          hover:bg-deep-2
           >_开发测试</router-link
         >
       </li>
@@ -54,9 +89,15 @@
       <li>
         <button
           @click="sysSettingStore.isSysSettingShow = !sysSettingStore.isSysSettingShow"
-          id="mega-menu-full-cta-image-button"
-          data-collapse-toggle="mega-menu-full-image-dropdown"
-          class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+          mini-text-center-between
+          w-full
+          p-2
+          text-gray-900
+          border-b
+          border-gray-200
+          dark:border-gray-500
+          bg-deep-0
+          hover:bg-deep-2
         >
           <SettingSVG />设置
         </button>
@@ -69,7 +110,6 @@
 import { ref } from 'vue'
 import MinPopover from '@/components/common/minUi/button/MinPopover.vue'
 import Func_1 from './Func_1.vue'
-import SysSetting from './SysSetting.vue'
 import ShowHidden from '@/components/common/minUi/animation/ShowHidden.vue'
 //
 import SettingSVG from '@/components/common/miniSvg/SettingSVG.vue'
