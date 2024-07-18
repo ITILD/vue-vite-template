@@ -1,10 +1,14 @@
 <template>
-    <div grid-head-center-foot>
+  <div grid-head-center-foot>
     <SysHeader h-14 />
-    <main class="bg-white dark:bg-gray-2 m-5">test</main>
+    <main bg-deep-3 px-1 py-2>
+      <div bg-deep-2 h-full rounded-md p-2>
+        <!--  -->
+        <div>test</div>
+      </div>
+    </main>
     <SysFooter />
   </div>
-
 </template>
 
 <script setup lang="ts">

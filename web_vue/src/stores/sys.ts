@@ -4,6 +4,7 @@ const SysSettingStore = defineStore('sysSetting', () => {
   const baseMd = 768
   const sysStyle = ref({
     headShow: true,
+    isUserControlShow: false,
     // 大小屏切分 普通页面不需要考虑横屏，部分三维场景考虑
     isMd: window.innerWidth > baseMd,
     theme: {

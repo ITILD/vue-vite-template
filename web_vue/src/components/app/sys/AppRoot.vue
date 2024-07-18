@@ -29,7 +29,7 @@
           w-20
           h-20
           class="button-svg"
-          @click="sysSettingStore.isSysSettingShow = !sysSettingStore.isSysSettingShow"
+          @click="sysSettingStore.isSysSettingShow = false"
         >
           <!-- 鲸鱼眼 四叶草 -->
           <Plant4LeafCloverSVG absolute right-0 top-0 m-3 w-7 />

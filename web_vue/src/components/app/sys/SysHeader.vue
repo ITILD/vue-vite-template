@@ -9,10 +9,10 @@
       <!-- 空标题 可以加装饰 -->
       <span left-0 right-0 m-auto></span>
       <!-- 用户图标 -->
-      <UserLogin @click="isUserControlShow = !isUserControlShow" />
+      <UserLogin @click="sysStyle.isUserControlShow = !sysStyle.isUserControlShow" />
       <!-- 点击用户图标下拉 导航栏-->
-      <MinPopover v-model="isUserControlShow">
-        <ShowHidden v-show="isUserControlShow">
+      <MinPopover v-model="sysStyle.isUserControlShow">
+        <ShowHidden v-show="sysStyle.isUserControlShow">
           <UserControl
             absolute
             z-10
@@ -24,7 +24,6 @@
             p-4
             text-xl
             shadow-xl
-            @click="isUserControlShow = false"
           />
         </ShowHidden>
       </MinPopover>
@@ -37,8 +36,6 @@
 import { SysSettingStore } from '@/stores/sys'
 const sysSettingStore = SysSettingStore()
 const sysStyle = sysSettingStore.sysStyle
-// 显隐控制
-const isUserControlShow = ref(false)
 </script>
 
 <style scoped></style>

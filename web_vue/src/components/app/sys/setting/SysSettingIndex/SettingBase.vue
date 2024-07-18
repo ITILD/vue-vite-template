@@ -11,15 +11,7 @@
       :changeValueFunc="changeThemeValue"
     />
     <!-- 语言选择 -->
-    <BaseSelect
-      w-70
-      h-21
-      m-2
-      v-model="sysStyle.language"
-      :name="$t('language')"
-      :options="languageOptions"
-      :changeValueFunc="(i18n.global.locale = sysStyle.language)"
-    />
+    <SettingLanguage w-70 h-21 m-2 />
   </div>
 </template>
 

@@ -18,6 +18,7 @@ export default defineConfig({
     ['text-align-last-justify', { 'text-align-last': 'justify' }]
   ],
   shortcuts: [
+    //Lime green teal emerald
     {
       // CSS 后者具有更高的优先级
       /**
@@ -68,7 +69,7 @@ export default defineConfig({
       // 居中
       'position-center': 'absolute top-0 left-0 right-0 bottom-0  m-auto',
       // 水平居中分开两边
-       'mini-text-center-between': 'flex items-center justify-between',
+      'mini-text-center-between': 'flex items-center justify-between',
       //flex 内容居中  flex items-center justify-center
       // 主页三段布局
       'grid-head-center-foot': 'min-h-full grid grid-center'
@@ -79,13 +80,21 @@ export default defineConfig({
       ([, d]) =>
         `bg-gray-${+d == 0 ? 50 : +d * 100} dark:bg-gray-${+d == 0 ? 950 : 1000 - +d * 100} text-deep-${d}`
     ],
-    // 文字颜色
-    // 'text-deep-0': 'text-gray-950 dark:text-gray-50',
-    // 'text-deep-1': 'text-gray-900 dark:text-gray-100',
+    // 文字颜色  'text-deep-0': 'text-gray-950 dark:text-gray-50', 'text-deep-1': 'text-gray-900 dark:text-gray-100',
     [
       /^text-deep-(\d+)$/,
       ([, d]) =>
         `text-gray-${+d == 0 ? 950 : 1000 - +d * 100} dark:text-gray-${+d == 0 ? 50 : +d * 100}`
     ]
-  ]
+  ],
+  theme: {
+    colors: {
+      // transparent: 'transparent',
+      // black: '#000',
+      // white: '#fff',
+      // gray: {
+      //   100: '#000',
+      // }
+    }
+  }
 })

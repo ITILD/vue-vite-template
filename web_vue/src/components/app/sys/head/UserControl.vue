@@ -4,14 +4,12 @@
       <li>
         <div mini-text-center-between>
           <UserLogin />
-          <div>X</div>
+          <div @click="sysStyle.isUserControlShow = false">X</div>
         </div>
       </li>
       <li>
         <button
           @click="showFun1 = !showFun1"
-          id="mega-menu-full-cta-image-button"
-          data-collapse-toggle="mega-menu-full-image-dropdown"
           mini-text-center-between
           w-full
           p-2
@@ -41,14 +39,14 @@
             <div
               v-show="showFun1"
               mini-text-center-between
-          w-full
-          p-2
-          text-gray-900
-          border-b
-          border-gray-200
-          dark:border-gray-500
-          bg-deep-0
-          hover:bg-deep-2
+              w-full
+              p-2
+              text-gray-900
+              border-b
+              border-gray-200
+              dark:border-gray-500
+              bg-deep-0
+              hover:bg-deep-2
             >
               <Func_1></Func_1>
             </div>
@@ -88,7 +86,7 @@
       <!-- setting -->
       <li>
         <button
-          @click="sysSettingStore.isSysSettingShow = !sysSettingStore.isSysSettingShow"
+          @click="sysSettingStore.isSysSettingShow = true"
           mini-text-center-between
           w-full
           p-2
@@ -116,9 +114,8 @@ import SettingSVG from '@/components/common/miniSvg/SettingSVG.vue'
 // 显隐控制
 import { SysSettingStore } from '@/stores/sys'
 const sysSettingStore = SysSettingStore()
-
+const sysStyle = sysSettingStore.sysStyle
 const showFun1 = ref(false)
-const isUserControlShow = ref(false)
 </script>
 
 <style></style>
