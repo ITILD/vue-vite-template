@@ -1,5 +1,5 @@
 <template>
-  <footer mx-auto w-full p-2 lg:py-2 bg-deep-0>
+  <footer>
     <hr border-gray-200 sm:mx-auto dark:border-gray-5 lg:mb-2 />
     <!-- 关联账号 本站 备案 -->
     <div sm:flex sm:items-center sm:justify-between>

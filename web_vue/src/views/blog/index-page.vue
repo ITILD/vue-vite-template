@@ -5,11 +5,11 @@
       v-model="valueEditer"
       :language="language"
       :hight-change="hightChange"
-      width="100%"
-      height="100%"
       @editor-mounted="editorMounted"
       :read-only="!true"
       :theme="theme"
+      w-full
+      h-full
     />
 
     <!-- 加载中状态 -->
@@ -52,7 +52,8 @@ const change = (value: string) => {
 // const monacoEditor = defineAsyncComponent(() => import('@/components/app/edit/monacoEditorDefaut.vue'))
 const valueEditer = ref('const a = 0')
 // const language = ref('sql')
-const language = ref('javascript')
+// const language = ref('javascript')
+const language = ref('markdown')
 // const theme = ref('vs')
 const theme = ref('vs-dark')
 // const language = ref('javascript')
