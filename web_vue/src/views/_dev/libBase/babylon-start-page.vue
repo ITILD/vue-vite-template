@@ -12,6 +12,8 @@
 import { onMounted, onBeforeUnmount } from 'vue'
 // import {Engine,Scene,ArcRotateCamera,Vector3,HemisphericLight,PointLight,MeshBuilder} from 'babylonjs';
 import * as BABYLON from 'babylonjs'
+// img
+import earth_0 from '@/assets/img/earth_0.png'
 let scene: BABYLON.Scene
 let engine: BABYLON.Engine
 let camera: BABYLON.FreeCamera
@@ -44,19 +46,37 @@ const initMap = () => {
   camera.setTarget(BABYLON.Vector3.Zero())
   // Attach the camera to the canvas
   camera.attachControl(canvas, false)
+
+  // 更改相机鼠标可以随意浏览
+
+  // 相机需要支持自定义    检测屏幕和射线与球面
+
+  // 球面不同级别为单独绘制  考虑先更改相机和简单球面
+
   // Create a basic light, aiming 0, 1, 0 - meaning, to the sky 添加一组灯光到场景
   const light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene)
   // const light2 = new BABYLON.PointLight('light2', new BABYLON.Vector3(0, 1, -1), scene)
   //添加一个球体到场景中
   // Create a built-in "sphere" shape; its constructor takes 6 params: name, segment, diameter, scene, updatable, sideOrientation
   const sphere = BABYLON.MeshBuilder.CreateSphere('sphere', { diameter: 2, segments: 32 }, scene)
+
+  const myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);
+
+  myMaterial.diffuseTexture = new BABYLON.Texture(earth_0, scene);
+  myMaterial.specularTexture = new BABYLON.Texture(earth_0, scene);
+  myMaterial.emissiveTexture = new BABYLON.Texture(earth_0, scene);
+  // myMaterial.ambientTexture = new BABYLON.Texture(earth_0, scene);
+
+  sphere.material = myMaterial;
   // Move the sphere upward 1/2 of its height
   sphere.position.y = 1
+
   // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
   const ground = BABYLON.MeshBuilder.CreateGround('ground', { width: 6, height: 6 }, scene)
   // 设置ground颜色
-  ground.material = new BABYLON.StandardMaterial('ground', scene)
-  ;(ground.material as BABYLON.StandardMaterial).diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5)
+  ground.material = new BABYLON.StandardMaterial('ground', scene);
+  // 漫反射
+  (ground.material as BABYLON.StandardMaterial).diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5)
   // Return the created scene
   // run the render loop 最后一步调用engine的runRenderLoop方案，执行scene.render()，让我们的3d场景渲染起来
   engine.runRenderLoop(() => {
@@ -86,17 +106,20 @@ const initMap = () => {
   height: 100%;
   overflow: hidden;
 }
+
 .canvasPP {
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
+
 .canvasP {
   position: absolute;
   width: 100%;
   height: 100%;
 }
+
 .glDom {
   z-index: 10;
   width: 100%;

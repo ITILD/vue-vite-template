@@ -5,7 +5,15 @@
     <main bg-deep-3 px-1 py-2>
       <div bg-deep-2 h-full rounded-md p-2>
         <!--  -->
-        <div>test</div>
+        <div>
+          过滤
+          list
+        </div>
+        <div>页码</div>
+        <div>
+          
+          增 删 改（链接）
+        </div>
       </div>
     </main>
     <SysFooter  mx-auto w-full p-2 lg:py-2 bg-deep-0 />
