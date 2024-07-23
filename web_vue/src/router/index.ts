@@ -1,23 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import home_view from '../views/home_view.vue'
+import home_page from '@/views/home_page.vue'
+import { routerDev } from './_dev'
+import { routerBlog } from './blog'
+const routes = [
+  // 首页同步
+  { path: '/', component: home_page },
+  // blog
+  ...routerBlog,
+  // 开发测试
+  ...routerDev
+]
 
+// 生成路由  注意nginx发布配置 添加跳转
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home_view',
-      component: home_view
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
+  routes: routes
 })
 
 export default router

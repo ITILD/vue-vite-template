@@ -1,4 +1,7 @@
+.vscode
 # Logs
 *.log
 # python
 **/__pycache__
+dist
+build

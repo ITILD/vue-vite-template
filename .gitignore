@@ -1,3 +1,6 @@
-.vscode
-*.pyc
 pnpm-lock.yaml
+node_modules
+*.pyc
+dist
+build
+.cache
