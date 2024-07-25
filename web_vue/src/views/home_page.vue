@@ -1,25 +1,27 @@
 <template>
   <div grid-head-center-foot>
-    <SysHeader h-14 bg-deep-1 />
+    <SysHeader h-14 bg-deep-1 z-999  shadow shadow-gray/>
     <!-- :style="'clip-path: polygon(0 0, 100% 0, 100% 100%, 0 '+clipPath[0]+'%)'"  -->
-    <main bg-deep-3 px-1 py-2>
-      <div bg-deep-2 h-full rounded-md p-2>
-        <!--  -->
-        <div>
+    <main bg-deep-3 px-1 py-2 >
+      <div bg-deep-2 h-full rounded-md p-2 >
+        <!-- 类似知乎抖音刷 -->
+        <div >
+          图数据库选择 下拉 大类   跳转后子类
+        </div>
+        
+        <div >
           过滤
           list
         </div>
-        <div>页码</div>
-        <div>
-          
-          增 删 改（链接）
-        </div>
+        
+        <div >页码  </div>
+
       </div>
 
-      <MoveWindow  >
-        <div w-30 h-30 rounded-3xl flex-center btn-deep-6> 
+      <MoveWindow  right-8 bottom-30 >
+        <div w-30 h-30 rounded-3xl flex-center btn-deep-6 shadow-md shadow-gray > 
 
-          <div font-600 text-4xl  font-serif @click="addPage">新建</div>
+          <div  font-600 text-4xl  font-serif @click="addPage">新建</div>
         </div>
        </MoveWindow>
     </main>
