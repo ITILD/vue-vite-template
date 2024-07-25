@@ -1,9 +1,10 @@
 <template>
-  <div fixed ref="outDom" class="botm_year">
+  <div fixed ref="outDom">
     <div class="con1_title" @mousedown="mouseDown($event)" @touchstart="touchDown($event)">
-      <div>标题111，拖拽它即可使整个div移动</div>
+      <!-- <div>标题111，拖拽它即可使整个div移动</div> -->
+       <slot></slot>
     </div>
-    <div>这是内容</div>
+    <!-- <div>这是内容</div> -->
   </div>
 </template>
 <script setup lang="ts">
@@ -60,7 +61,7 @@ const touchDown = (e: TouchEvent) => {
   let moveX = e.targetTouches[0].pageX - moveEl.offsetLeft
   let moveY = e.targetTouches[0].pageY  - moveEl.offsetTop
 
-  const touchmove = (e) => {
+  const touchmove = (e: TouchEvent) => {
     console.log('touchDown移动')
     let dropX = width - (e.targetTouches[0].pageX  - moveX) - domW
     let dropY = height - (e.targetTouches[0].pageY  - moveY) - domH
@@ -78,7 +79,7 @@ const touchDown = (e: TouchEvent) => {
     moveEl.style.right = dropX + 'px'
     moveEl.style.bottom = dropY + 'px'
   }
-  const touchend = (e) => {
+  const touchend = () => {
     console.log('touchDown抬起')
     document.removeEventListener('touchmove', touchmove)
     document.removeEventListener('touchend', touchend)

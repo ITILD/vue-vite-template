@@ -15,8 +15,15 @@
           增 删 改（链接）
         </div>
       </div>
+
+      <MoveWindow  >
+        <div w-30 h-30 rounded-3xl flex-center btn-deep-6> 
+
+          <div font-600 text-4xl  font-serif @click="addPage">新建</div>
+        </div>
+       </MoveWindow>
     </main>
-    <SysFooter  mx-auto w-full p-2 lg:py-2 bg-deep-0 />
+    <SysFooter  mx-auto w-full p-2 lg:py-2 bg-deep-0  />
   </div>
 </template>
 
@@ -29,5 +36,8 @@ sysStyle.value.headShow = true
 console.log('跳转')
 const clipPath =ref( [100])
 // offset-path是用来实现路径动画  可以考虑流星浪花藤曼
+const addPage = () => {
+  console.log('addPage')
+}
 </script>
 <style scoped></style>
