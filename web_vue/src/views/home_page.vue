@@ -21,7 +21,9 @@
       <MoveWindow  right-8 bottom-30 >
         <div w-30 h-30 rounded-3xl flex-center btn-deep-6 shadow-md shadow-gray > 
 
-          <div  font-600 text-4xl  font-serif @click="addPage">新建</div>
+          <!-- <div  @click="addPage">新建</div> -->
+          <!-- /blog/blog-new 路由 -->
+           <RouterLink font-600 text-4xl  font-serif  to="/blog/blog-new" >新建</RouterLink>
         </div>
        </MoveWindow>
     </main>
