@@ -2,10 +2,17 @@
   <div>
     <ul flex flex-col>
       <li>
-        <div mini-text-center-between>
-          <UserLogin />
-          <div @click="sysStyle.isUserControlShow = false">X</div>
+        <div mini-text-center-between h-12>
+          <div flex >
+            <UserLogin m-2 />
+            <div text-sm text-deep-1>
+              <div font-600>Name User</div>
+              <div font-100 text-deep-5>**@***.com</div>
+            </div>
+          </div>
+          <button w-14 h-full rounded-full bg-deep-8 @click="sysStyle.isUserControlShow = false">×</button>
         </div>
+
       </li>
       <li>
         <button @click="showFun1 = !showFun1" mini-text-center-between w-full p-2 text-gray-900 border-b border-gray-200

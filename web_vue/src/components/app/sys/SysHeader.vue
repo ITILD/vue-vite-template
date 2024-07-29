@@ -16,7 +16,7 @@
           <UserControl
             absolute
             z-10
-            w-50
+            w-60
             right-2
             top-4
             rounded-lg
