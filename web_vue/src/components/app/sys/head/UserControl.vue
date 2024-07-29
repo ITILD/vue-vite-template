@@ -1,53 +1,55 @@
 <template>
   <div>
     <ul flex flex-col>
-      <li>
+      <li my-1 mb-3>
         <div mini-text-center-between h-12>
-          <div flex >
-            <UserLogin m-2 />
-            <div text-sm text-deep-1>
-              <div font-600>Name User</div>
-              <div font-100 text-deep-5>**@***.com</div>
+          <!-- 名字 邮箱 -->
+          <div flex items-center  h-full>
+            <UserLogin m-2 w-12 h-full />
+            <div text-deep-1>
+              <div  text-lg font-600>Name User</div>
+              <div  text-sm font-100 text-deep-5>**@***.com</div>
             </div>
           </div>
-          <button w-14 h-full rounded-full bg-deep-8 @click="sysStyle.isUserControlShow = false">×</button>
+          <!-- 关闭 -->
+          <button w-14 h-full rounded-full bg-deep-2 hover:bg-deep-3
+            @click="sysStyle.isUserControlShow = false">×</button>
         </div>
-
       </li>
-      <li>
-        <button @click="showFun1 = !showFun1" mini-text-center-between w-full p-2 text-gray-900 border-b border-gray-200
-          dark:border-gray-500 bg-deep-0 hover:bg-deep-2>
-          项目列表1
-          <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clip-rule="evenodd"></path>
-          </svg>
+      <!-- 循环buttonList -->
+      <li v-for="(item, index) in buttonList" :key="index" m-1>
+        <!-- fuc -->
+        <button v-if="item.clickFuc" flex items-center w-full h-16 p-1   bg-deep-0 rounded-lg
+          hover:bg-deep-2 @click="item.clickFuc(item)"   :class="item.isShow&&'bg-deep-3'">
+          <component :is="item.icon" v-if="item.icon" w-8 mx-1 />
+          <span sm font-2  mx-2>{{ item.name }}</span>
         </button>
-        <MinPopover v-model="showFun1">
+        <!-- child MinPopover-->
+        <MinPopover v-if="item.child" v-model="item.isShow">
           <ShowHidden>
-            <div v-show="showFun1" mini-text-center-between w-full p-2 text-gray-900 border-b border-gray-200
-              dark:border-gray-500 bg-deep-0 hover:bg-deep-2>
+            <div v-show="item.isShow" relative left-4 w-55 p-2 rounded-lg
+            bg-deep-0 hover:bg-deep-2>
               <Func_1></Func_1>
+               <!-- <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div>
+               <div>test</div> -->
             </div>
           </ShowHidden>
         </MinPopover>
+
       </li>
-      <li>
-        <router-link to="/blog" mini-text-center-between w-full p-2 text-gray-900 border-b border-gray-200
-          dark:border-gray-500 bg-deep-0 hover:bg-deep-2>blog</router-link>
-      </li>
-      <li>
-        <router-link to="/_dev" mini-text-center-between w-full p-2 text-gray-900 border-b border-gray-200
-          dark:border-gray-500 bg-deep-0 hover:bg-deep-2>_开发测试</router-link>
-      </li>
-      <!-- setting -->
-      <li>
-        <button @click="openSysSettingShow" mini-text-center-between w-full p-2 text-gray-900 border-b border-gray-200
-          dark:border-gray-500 bg-deep-0 hover:bg-deep-2>
-          <SettingSVG />设置
-        </button>
-      </li>
+
     </ul>
   </div>
 </template>
@@ -61,6 +63,9 @@ import ShowHidden from '@/components/common/minUi/animation/ShowHidden.vue'
 import SettingSVG from '@/components/common/miniSvg/SettingSVG.vue'
 // 显隐控制
 import { SysSettingStore } from '@/stores/sys'
+// router
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const sysSettingStore = SysSettingStore()
 const sysStyle = sysSettingStore.sysStyle
 const showFun1 = ref(false)
@@ -70,6 +75,41 @@ const openSysSettingShow = () => {
   sysSettingStore.isSysSettingShow = true
   closeUserControlShow()
 }
+
+// 两级父子对象
+const buttonList = ref([{
+  name: '项目列表1',
+  icon: SettingSVG,
+  clickFuc: (item:any) => { item.isShow = !item.isShow },
+  isShow:false,
+  child: [
+    { name: '项目列表1-1', icon: null },
+    {
+      name: '项目列表1-2', icon: null
+    }
+  ]
+},
+{
+  name: 'blog',
+  icon: null,
+  clickFuc: () => {
+    router.push('/blog')
+  }
+},
+{
+  name: '开发测试',
+  icon: SettingSVG,
+  url: '/_dev',
+  clickFuc: () => {
+    router.push('/_dev')
+  }
+},
+{
+  name: '设置',
+  icon: SettingSVG,
+  clickFuc: openSysSettingShow
+}
+])
 </script>
 
 <style></style>

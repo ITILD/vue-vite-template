@@ -72,7 +72,6 @@ const emit = defineEmits(['update:modelValue', 'change', 'editor-mounted'])
 self.MonacoEnvironment = {
   getWorker: (_: string, label: string) => {
     // eslint-disable-next-line no-debugger
-    debugger
     const getWorkerModule = (moduleUrl: string, label: string) =>
       new Worker((self as any).MonacoEnvironment.getWorkerUrl(moduleUrl), {
         name: label,

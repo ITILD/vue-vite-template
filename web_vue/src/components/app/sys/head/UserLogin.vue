@@ -4,7 +4,7 @@
       <img w-full h-full src="" alt="" srcset="" />
     </div>
     <!--游客图标 -->
-    <UserSVG v-else />
+    <UserSVG w-full h-full v-else />
   </div>
 </template>
 <script setup lang="ts">

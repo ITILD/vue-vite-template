@@ -1,7 +1,6 @@
 <template>
   <svg
-    w-6
-    h-6
+
     fill="currentColor"
     aria-hidden="true"
     viewBox="0 0 30 30"
