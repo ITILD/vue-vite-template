@@ -17,7 +17,7 @@
 import WaitAnimate from '@/components/app/sampleUtils/state/WaitAnimate.vue';
 import { defineAsyncComponent, ref } from 'vue'
 
-const monacoEditor = defineAsyncComponent(() => import('@/components/app/edit/monacoEditor.vue'))
+const monacoEditor = defineAsyncComponent(() => import('@/components/app/sys/blog/BlogEditor/monacoEditor.vue'))
 // const monacoEditor = defineAsyncComponent(() => import('@/components/app/edit/monacoEditorDefaut.vue'))
 const value = ref('const a = 0')
 // const language = ref('sql')

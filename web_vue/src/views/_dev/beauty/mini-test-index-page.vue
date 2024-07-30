@@ -10,6 +10,8 @@
         </ul>
         <main grow h-full border-4 border-black overflow-auto>
             <section v-for="item in tabs.list" :key="item.key" h-300 :id="item.key" border-2 b-black>{{ item.name }}
+            <div w-full class="h-1/2" bg-deep-3></div>
+            <div w-full class="h-1/2" bg-deep-5></div>
             </section>
         </main>
     </div>
@@ -20,7 +22,8 @@ onMounted(() => {
     // IntersectionObserver
     const options = {
         // root is only required because this sandbox is in an iframe.
-        root: document,
+        // root: document,
+        // y缩减一半
         rootMargin: "-50% 0px",
         threshold: 0
     };
