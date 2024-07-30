@@ -180,7 +180,12 @@ const UnCategorized =
           {
             name: '网页滚动轴设计',
             url: '/_dev/beauty/web-scroll-base-page'
-          }
+          },
+          {
+            name: 'mini列表组件测试',
+            url: '/_dev/beauty/mini-test-index-page'
+          },
+
         ]
       },
       {
@@ -287,7 +292,7 @@ const routerAll = reactive({
       name: 'fun'
     },
     UnCategorized,
-    DevTool || null
+    DevTool || null,
   ]
 })
 </script>
