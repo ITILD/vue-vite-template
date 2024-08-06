@@ -20,7 +20,7 @@
         <div >页码  </div>
         <div> 地球 飞船 黑洞     编辑 新建 删除</div>
 
-        <div>语义化</div>
+        <div>语义化Semanticization</div>
 
       </div>
 
