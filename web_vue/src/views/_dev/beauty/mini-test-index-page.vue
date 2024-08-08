@@ -5,7 +5,7 @@
                 <span :class="item.id === dataSlice.active && 'bg-deep-4'">{{ item.name }}</span>
             </li>
         </ul>
-        <main grow h-full border-4 border-black overflow-auto ref="outBox">
+        <main grow h-full border-4 border-black overflow-auto 	overscroll-contain ref="outBox">
             <section v-for="(item, index) in dataSlice.list" :key="index" :id="item.id" h-200 border-2 b-black
                 ref="dataRef">
                 <div>{{ item.name }}</div>
@@ -29,14 +29,7 @@ const monacoEditor = defineAsyncComponent(
 )
 const outBox = ref<Element>()
 const sateSet = new SateSet()
-
 const dataRef = ref<Array<Element>>([])
-onMounted(() => {
-    /**
-     * 初始加载
-     */
-    clickDataItem(dataAll[0], 0)
-})
 
 // 所有列表
 const dataAll = [
@@ -64,11 +57,13 @@ const dataAll = [
     }
 ]
 
-const dataFirst = dataAll[0]
-const dataSlice = ref({
-    active: dataFirst.id,
-    list: [dataFirst]
-})
+onMounted(() => { clickDataItem(dataAll[0], 0) })
+// 添加ts类型
+type DataSlice = {
+    active: any,
+    list: any[]
+}
+const dataSlice:Ref<DataSlice> = ref({ active: null, list: [] })
 
 let indexStart = 0
 let indexInDataAllOld = 0
@@ -78,13 +73,16 @@ let indexInDataAllOld = 0
  * @param index 数组索引
  */
 const clickDataItem = async (data: { id: any }, indexInDataAll: any) => {
-    console.log('click+i', data.id, indexInDataAll)
     await renderAll(data.id, indexInDataAll)
     // 滚动到指定位置  {behavior: "smooth"}顺滑
-    dataRef.value[indexInDataAllOld - indexStart].scrollIntoView({ behavior: "smooth" });
+    dataRef.value[indexInDataAllOld - indexStart].scrollIntoView({ behavior: 'smooth' })
 }
 
-
+/**
+ * 渲染新div
+ * @param id
+ * @param indexInDataAll
+ */
 const renderAll = async (id: string, indexInDataAll: number) => {
     // 左侧选中
     dataSlice.value.active = id
@@ -128,18 +126,8 @@ const gotoDiv = async () => {
     })
 }
 
-
-onUpdated(() => {
-    console.log('onUpdate!!!!!!!!!!!!!!')
-
-
-})
-
-// 滚动监听
-const options = {
-    rootMargin: '-50% 0px',// y缩减一半
-    threshold: 0
-}
+// 滚动监听  y缩减一半
+const options = { rootMargin: '-50% 0px', threshold: 0 }
 /**
  * 监听滚动
  */
@@ -148,22 +136,28 @@ const observer = new IntersectionObserver(async (entries) => {
     for (let i = 0; i < entries.length; i++) {
         const entry = entries[i]
         if (!entry.isIntersecting) continue
-        const indexInDataAll = dataAll.findIndex((element) => element.id === entry.target.id);
+        const indexInDataAll = dataAll.findIndex((element) => element.id === entry.target.id)
         // 跳转游标
         const trans = indexInDataAll - indexInDataAllOld
         if (trans == 0) break
         let firstChangeDomHeight = null
         // 下滚动 下滚动开始只有两个对象 下拉结尾未卸载第一个dom
-        if (trans == 1 && dataRef.value.length > 2) firstChangeDomHeight = dataRef.value[0]!.clientHeight
+        if (trans == 1 && dataRef.value.length > 2)
+            firstChangeDomHeight = dataRef.value[0]!.clientHeight
         // 深拷贝
-        await renderAll(entry.target.id, indexInDataAll)  // 渲染后
+        await renderAll(entry.target.id, indexInDataAll) // 渲染后
         // 上滚动
         if (trans == -1) firstChangeDomHeight = dataRef.value[0]!.clientHeight
         //dataRef.value.length>2 下拉结尾未添加尾部 上拉结尾未添加头部  不动
         if (dataRef.value.length > 2 && firstChangeDomHeight)
-            outBox.value?.scrollTo({ top: outBox.value!.scrollTop - trans * firstChangeDomHeight })// 滚动
+            outBox.value?.scrollTo({ top: outBox.value!.scrollTop - trans * firstChangeDomHeight }) // 滚动
         break
     }
 }, options)
 </script>
-<style scoped></style>
+<style scoped>
+main::-webkit-scrollbar {
+/*隐藏滚轮*/
+display: none;
+}
+</style>
