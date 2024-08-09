@@ -1,7 +1,7 @@
 <template>
     <div flex h-full>
         <ul border-4 border-blue w-20 h-full>
-            <li v-for="(item, index) in dataAll" :key="item.id" m-2 flex items-center @click="clickDataItem(item, index)">
+            <li v-for="(item, index) in dataAll" :key="item.id" m-2 flex items-center pointer-default @click="clickDataItem(item, index)">
                 <span :class="item.id === dataSlice.active && 'bg-deep-4'">{{ item.name }}</span>
             </li>
         </ul>
@@ -27,6 +27,9 @@ import { SateSet } from '@/components/common/miniExtension/utils/state'
 const monacoEditor = defineAsyncComponent(
     () => import('@/components/app/sys/blog/BlogEditor/monacoEditor.vue')
 )
+const miniIndex = defineAsyncComponent(
+    () => import('@/components/common/miniExample/mini_index.vue')
+)
 const outBox = ref<Element>()
 const sateSet = new SateSet()
 const dataRef = ref<Array<Element>>([])
@@ -35,7 +38,7 @@ const dataRef = ref<Array<Element>>([])
 const dataAll = [
     {
         id: 'one1',
-        name: 'one',
+        name: 'ide测试',
         component: monacoEditor
     },
     {
@@ -45,7 +48,7 @@ const dataAll = [
     {
         id: 'three3',
         name: 'three',
-        component: monacoEditor
+        component: miniIndex
     },
     {
         id: 'four4',

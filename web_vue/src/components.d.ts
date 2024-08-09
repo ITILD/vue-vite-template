@@ -14,6 +14,7 @@ declare module 'vue' {
     BlogShow: typeof import('./components/app/sys/blog/BlogShow.vue')['default']
     ButtonSwitch: typeof import('./components/common/minUi/button/ButtonSwitch.vue')['default']
     Component: typeof import('./components/template/Component.vue')['default']
+    copy: typeof import('./components/common/miniExample/mini_index copy.vue')['default']
     CountButton: typeof import('./components/common/minUi/input/CountButton.vue')['default']
     DribbbleSVG: typeof import('./components/common/miniSvg/DribbbleSVG.vue')['default']
     Func_1: typeof import('./components/app/sys/head/Func_1.vue')['default']
