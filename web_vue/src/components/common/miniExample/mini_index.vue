@@ -1,29 +1,29 @@
 <template>
   <!-- 1头部 -->
-  <header>
+  <header bg-red-1>
     <!-- 头部标题 -->
     <h1>头部标题</h1>
     <!-- 导航 -->
-    <nav>
-      <ul>
+    <nav >
+      <ul flex gap-10>
         <li>
-          <a href="#">导航1</a>
+          <a href="#">nav1</a>
         </li>
         <li>
-          <a href="#">导航2</a>
+          <a href="#">nav2</a>
         </li>
       </ul>
     </nav>
   </header>
   <!-- 2主体 -->
-  <main>
+  <main flex>
     <!-- 侧边栏aside -->
-    <aside>
+    <aside bg-yellow-1>
       <h2>侧边栏标题</h2>
       <p>侧边栏内容</p>
     </aside>
     <!-- 部分片段section -->
-    <article>
+    <article grow bg-blue-1>
       <h1>title</h1>
       <section>
         <h2>title1.1</h2>
@@ -36,7 +36,8 @@
     </article>
   </main>
   <!-- 3页脚 -->
-  <footer>
+  <footer bg-green-1>
+    <h1>页脚</h1>
     <ul></ul>
     <address></address>
   </footer>

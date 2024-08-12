@@ -1,13 +1,14 @@
 <template>
     <div flex h-full>
         <ul border-4 border-blue w-20 h-full>
-            <li v-for="(item, index) in dataAll" :key="item.id" m-2 flex items-center pointer-default @click="clickDataItem(item, index)">
+            <li v-for="(item, index) in dataAll" :key="item.id" m-2 flex items-center pointer-default
+                @click="clickDataItem(item, index)">
                 <span :class="item.id === dataSlice.active && 'bg-deep-4'">{{ item.name }}</span>
             </li>
         </ul>
-        <main grow h-full border-4 border-black overflow-auto 	overscroll-contain ref="outBox">
-            <section v-for="(item, index) in dataSlice.list" :key="index" :id="item.id" h-200 border-2 b-black
-                ref="dataRef">
+        <main grow h-full border-4 border-black overflow-auto overscroll-contain ref="outBox">
+            <section v-for="(item, index) in dataSlice.list" :key="index" :id="item.id" h-full
+                :class="(indexStart + index) % 2 === 0 ? 'bg-gray-200' : 'bg-gray-400'" ref="dataRef">
                 <div>{{ item.name }}</div>
                 <!-- component -->
                 <Suspense v-if="item.component">
@@ -66,9 +67,10 @@ type DataSlice = {
     active: any,
     list: any[]
 }
-const dataSlice:Ref<DataSlice> = ref({ active: null, list: [] })
+const dataSlice: Ref<DataSlice> = ref({ active: null, list: [] })
 
-let indexStart = 0
+// 已渲染数组开始
+let indexStart = ref(0)
 let indexInDataAllOld = 0
 /**
  * 更新数据
@@ -78,7 +80,7 @@ let indexInDataAllOld = 0
 const clickDataItem = async (data: { id: any }, indexInDataAll: any) => {
     await renderAll(data.id, indexInDataAll)
     // 滚动到指定位置  {behavior: "smooth"}顺滑
-    dataRef.value[indexInDataAllOld - indexStart].scrollIntoView({ behavior: 'smooth' })
+    dataRef.value[indexInDataAllOld - indexStart.value].scrollIntoView({ behavior: 'smooth' })
 }
 
 /**
@@ -107,9 +109,9 @@ const renderDiv = (indexInDataAll: number) => {
     const indexThis = indexInDataAllOld - 1
     const indexEnd = indexInDataAllOld + 2
     // 考虑首部0超限 实际位置
-    indexStart = indexThis < 0 ? 0 : indexThis
+    indexStart.value = indexThis < 0 ? 0 : indexThis
 
-    dataSlice.value.list = dataAll.slice(indexStart, indexEnd)
+    dataSlice.value.list = dataAll.slice(indexStart.value, indexEnd)
 }
 
 /**
@@ -160,7 +162,7 @@ const observer = new IntersectionObserver(async (entries) => {
 </script>
 <style scoped>
 main::-webkit-scrollbar {
-/*隐藏滚轮*/
-display: none;
+    /*隐藏滚轮*/
+    display: none;
 }
 </style>

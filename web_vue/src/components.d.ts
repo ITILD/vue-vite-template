@@ -42,7 +42,7 @@ declare module 'vue' {
     SettingSVG: typeof import('./components/common/miniSvg/SettingSVG.vue')['default']
     ShowHidden: typeof import('./components/common/minUi/animation/ShowHidden.vue')['default']
     ShowHiddenMove: typeof import('./components/common/minUi/animation/ShowHiddenMove.vue')['default']
-    SimpleHeader: typeof import('./components/common/minUi/Layout/SimpleHeader.vue')['default']
+    SimpleHeader: typeof import('./components/common/minUi/HeadFoot/SimpleHeader.vue')['default']
     SimplePopover: typeof import('./components/common/minUi/button/SimplePopover.vue')['default']
     StateLoading: typeof import('./components/common/minUi/animation/StateLoading.vue')['default']
     Style_test0: typeof import('./components/common/minUi/_todo/style_test0.vue')['default']
