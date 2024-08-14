@@ -20,6 +20,7 @@ declare module 'vue' {
     Func_1: typeof import('./components/app/sys/head/Func_1.vue')['default']
     GithubSVG: typeof import('./components/common/miniSvg/GithubSVG.vue')['default']
     GmailSVG: typeof import('./components/common/miniSvg/GmailSVG.vue')['default']
+    LayoutHLMF: typeof import('./components/common/minUi/layout/LayoutHLMF.vue')['default']
     ListSVG: typeof import('./components/common/miniSvg/ListSVG.vue')['default']
     LogoutSVG: typeof import('./components/common/miniSvg/LogoutSVG.vue')['default']
     MenuGroup: typeof import('./components/common/minUi/menu/MenuGroup.vue')['default']
