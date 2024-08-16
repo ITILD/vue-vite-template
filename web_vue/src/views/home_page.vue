@@ -1,6 +1,6 @@
 <template>
   <div grid-head-center-foot>
-    <SysHeader h-14 bg-deep-1 z-999 shadow shadow-gray />
+    <SysHeader h-14 bg-deep-1 z-1 shadow shadow-gray />
     <!-- :style="'clip-path: polygon(0 0, 100% 0, 100% 100%, 0 '+clipPath[0]+'%)'"  -->
     <main bg-deep-3 px-1 py-2>
       <div bg-deep-2 h-full rounded-md p-2>
@@ -28,10 +28,10 @@
 
         <!-- list -->
         <!-- 开源url 信息格式化 key value -->
-
+<!--  offset-path是用来实现路径动画  可以考虑流星浪花藤曼 -->
       </div>
 
-      <MoveWindow ref="dragRef" right-8 bottom-30>
+      <MoveWindow ref="dragRef" right-8 bottom-30 z-2>
         <div w-30 h-30 rounded-3xl flex-center btn-deep-6 shadow-md shadow-gray>
 
           <div w-full h-full @click="addPage">新建</div>
@@ -52,10 +52,6 @@ import { SysSettingStore } from '@/stores/sys'
 import router from '@/router';
 const { sysStyle } = storeToRefs(SysSettingStore())
 sysStyle.value.headShow = true
-console.log('跳转')
-const clipPath = ref([100])
-// offset-path是用来实现路径动画  可以考虑流星浪花藤曼
-
 const dragRef = ref();
 const addPage = () => {
   // 拖拽中，不执行后续操作

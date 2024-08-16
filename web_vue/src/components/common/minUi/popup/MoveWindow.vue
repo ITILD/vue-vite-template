@@ -43,34 +43,36 @@ const mouseOrTouchDown = (e: MouseEvent | TouchEvent) => {
   let moveX = getMouseOrTouchXY(e).x - moveEl.offsetLeft
   let moveY = getMouseOrTouchXY(e).y - moveEl.offsetTop
   const onMove = (e: MouseEvent | TouchEvent) => {
-    console.log('l2', e.type)
+    // console.log('l2', e.type)
     //设置拖拽标记   
     moveEl.dragFlag = true;
     let dropX = width - (getMouseOrTouchXY(e).x - moveX) - domW
     let dropY = height - (getMouseOrTouchXY(e).y - moveY) - domH
-    if (dropX > width - domW) {
+    if (dropX >= width - domW) {
       dropX = width - domW
     } else if (dropX < 0) {
       dropX = 0
     }
-    if (dropY > height - domH) {
+    if (dropY >= height - domH) {
       dropY = height - domH
     } else if (dropY < 0) {
       dropY = 0
     }
     moveEl.style.right = dropX + 'px'
     moveEl.style.bottom = dropY + 'px'
+    moveEl.style.left = null
+    moveEl.style.top = null
+    
   }
   // 判断触摸还是鼠标
   if (e instanceof MouseEvent) {
     document.onmousemove = onMove
     document.onmouseup = () => {
-      console.log('MouseEvent抬起')
+      // console.log('MouseEvent抬起')
       document.onmousemove = document.onmouseup = null
     }
     // 鼠标
   } else {
-    console.log('l1', e.type)
     // 触摸 移动端失效
     // document.ontouchmove = onMove
     // document.ontouchend = () => (document.ontouchmove = document.ontouchend = null)
