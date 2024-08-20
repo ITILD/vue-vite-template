@@ -1,5 +1,5 @@
 <template>
-  <div fixed ref="outDom">
+  <div fixed ref="moveDom">
     <div class="con1_title" @mousedown="mouseOrTouchDown($event)" @touchstart="mouseOrTouchDown($event)">
       <!-- <div>标题111，拖拽它即可使整个div移动</div> -->
       <slot></slot>
@@ -10,7 +10,7 @@
 </template>
 <script setup lang="ts">
 /**
- * 鼠标按下,不经过移动 moveEl.dragFlag = false;
+ * 鼠标按下,不经过移动 moveEl.isMoving = false;
  * 用法
  * 
     <MoveWindow ref="dragRef" right-8 bottom-30>
@@ -23,16 +23,36 @@
     </MoveWindow>
     const dragRef = ref();
     const addPage = () => {
-    if(dragRef.value.$el.dragFlag)return
+    if(dragRef.value.$el.isMoving)return
     console.log('addPage')
     }
  */
-const outDom = ref()
+const props = defineProps<{
+  isCenter?: boolean
+}>();
+
+const moveDom = ref()
+
+
+onMounted(() => {
+  // moveDom 居中
+  if (props.isCenter) {
+    let moveEl: any = moveDom.value
+    let width = window.innerWidth
+    let height = window.innerHeight
+    let domW = moveEl.offsetWidth
+    let domH = moveEl.offsetHeight
+    moveEl.style.right = (width - domW) / 2 + 'px'
+    moveEl.style.bottom = (height - domH) / 2 + 'px'
+  }
+
+})
+
 
 const mouseOrTouchDown = (e: MouseEvent | TouchEvent) => {
-  let moveEl: any = outDom.value
+  let moveEl: any = moveDom.value
   //拖拽标记还原 阻止外部点击
-  moveEl.dragFlag = false;
+  moveEl.isMoving = false;
   // 元素的大小
   let domW = moveEl.offsetWidth
   let domH = moveEl.offsetHeight
@@ -45,7 +65,7 @@ const mouseOrTouchDown = (e: MouseEvent | TouchEvent) => {
   const onMove = (e: MouseEvent | TouchEvent) => {
     // console.log('l2', e.type)
     //设置拖拽标记   
-    moveEl.dragFlag = true;
+    moveEl.isMoving = true;
     let dropX = width - (getMouseOrTouchXY(e).x - moveX) - domW
     let dropY = height - (getMouseOrTouchXY(e).y - moveY) - domH
     if (dropX >= width - domW) {
@@ -60,9 +80,6 @@ const mouseOrTouchDown = (e: MouseEvent | TouchEvent) => {
     }
     moveEl.style.right = dropX + 'px'
     moveEl.style.bottom = dropY + 'px'
-    moveEl.style.left = null
-    moveEl.style.top = null
-    
   }
   // 判断触摸还是鼠标
   if (e instanceof MouseEvent) {
@@ -80,7 +97,7 @@ const mouseOrTouchDown = (e: MouseEvent | TouchEvent) => {
       // console.log('touchDown抬起')
       document.removeEventListener('touchmove', onMove)
       document.removeEventListener('touchend', touchend)
-      moveEl.dragFlag = false;
+      moveEl.isMoving = false;
     }
     document.addEventListener('touchmove', onMove)
     document.addEventListener('touchend', touchend)
@@ -104,7 +121,5 @@ const getMouseOrTouchXY = (e: MouseEvent | TouchEvent) => {
   }
   return { x, y }
 }
-
-
 </script>
 <style scoped></style>

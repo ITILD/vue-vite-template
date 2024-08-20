@@ -48,9 +48,6 @@ export default defineConfig({
       'fbg-deep-2': 'bg-gray-200 dark:bg-gray-800',
       'fbg-deep-3': 'bg-gray-300 dark:bg-gray-700',
       'fbg-deep-4': 'bg-gray-400 dark:bg-gray-600',
-
-      // 半透明遮罩
-      'bg-op90': 'bg-gray-200/90 dark:bg-gray-900/90',
       // 边框
       // 鼠标
       'pointer-default': 'select-none  cursor-pointer',
