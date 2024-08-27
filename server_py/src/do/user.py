@@ -7,6 +7,7 @@ class User(SQLModel, table=True):
     # 定义表结构
     # uuid 标准格式
     id: str = Field(default_factory=lambda: str(uuid4()), primary_key=True, index=True, unique=True)
+    # id: UUID = Field(default_factory=uuid4, primary_key=True, index=True, unique=True)
     name:str
     email:str
     created_at: datetime = Field(default=datetime.utcnow)

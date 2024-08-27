@@ -4,6 +4,14 @@
     <!-- :style="'clip-path: polygon(0 0, 100% 0, 100% 100%, 0 '+clipPath[0]+'%)'"  -->
     <main bg-deep-3 px-1 py-2>
       <div bg-deep-2 h-full rounded-md p-2>
+
+        <!-- 公开高评分  list  -->       
+        <!-- 私有置顶类别 -->
+        <!-- 私有置顶文章 -->
+
+  
+<!-- Chroma 嵌入式向量和 -->
+
         <!-- 类似知乎抖音刷 -->
         <!-- <div>
           图数据库选择 下拉 大类 跳转后子类

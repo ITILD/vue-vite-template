@@ -10,6 +10,4 @@ import webview
 api = Api()
 window = webview.create_window('pc', f'http://localhost:{port_no_used}',js_api=api)
 
-
-
 print('...pc服务配置完成')

@@ -1,4 +1,5 @@
 # self
+import os
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from config.log import console
@@ -8,17 +9,20 @@ from service.index import TableService
 from fastapi import APIRouter, status
 from config.path import path_html
 
-# 配置静态文件服务
-app.mount("/", StaticFiles(directory=path_html, html=True), name="static")
+html_file = open(os.path.join(path_html, "index.html"), 'r').read()
+# 配置前端静态文件服务
+app.mount("/assets", StaticFiles(directory=os.path.join(path_html, "assets"), html=True), name="assets")
 # 首页 app非router挂载
-# @app.get("/", response_class=HTMLResponse)
-# async def server():
-#     console.log('初始首页html')
-#     html_file = open("index.html", 'r').read()
-#     return html_file
+@app.get("/", response_class=HTMLResponse)
+async def server():
+    console.log('初始首页html') 
+    return html_file
+
+
 
 # 基础db
 router = APIRouter()
+
 # 测试
 @router.get("/create",status_code=status.HTTP_201_CREATED)
 async def create():

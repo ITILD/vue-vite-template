@@ -12,16 +12,19 @@ class UsersService:
     '''文件服务'''
     @staticmethod
     async def add(user: User):
-        try:
-            console.log("test1 start!") 
-            # 调用函数
-            # if not user.time:user.time = datetime.now()
-            return await UserDao.insert(user)
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=e)
+        return await UserDao.insert(user)
+
+    # async def add(user: User):
+    #     try:
+    #         console.log("test1 start!") 
+    #         # 调用函数
+    #         # if not user.time:user.time = datetime.now()
+    #         return await UserDao.insert(user)
+    #     except Exception as e:
+    #         raise HTTPException(status_code=500, detail=e)
     @staticmethod
-    async def select_by_id(id:UUID):
-        return UserDao.select_by_id(id)
+    async def select_by_id(id:str)->User|None:
+        return await UserDao.select_by_id(id)
         
     @staticmethod
     async def update_by_email(name: str,email:str):
