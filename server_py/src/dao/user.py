@@ -25,3 +25,13 @@ class UserDao:
         # data = result.scalars().first()
         user = await session.get(User, id)
         return user
+    
+    # update update_by_email
+    @Data
+    async def update_by_email(name: str,email:str, session=AsyncSession):
+        return await session.get(User, email)
+    
+    # delete delete_by_id
+    @Data
+    async def delete_by_id(id: str, session=AsyncSession):
+        return await session.delete(User, id)

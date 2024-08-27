@@ -27,7 +27,6 @@ router = APIRouter()
 @router.get("/create",status_code=status.HTTP_201_CREATED)
 async def create():
     '''创建未创建的表'''
-    console.log('test1')
     result=await TableService.create()
     return result
 

@@ -10,12 +10,11 @@ class TableDao:
     #     SQLModel.metadata.create_all(engine)
         
     async def create():
+        '''创建所有未创建的表格'''
         async with engine.begin() as conn:
             # await conn.run_sync(SQLModel.metadata.drop_all)
             await conn.run_sync(SQLModel.metadata.create_all)
-            
-
-        
+                    
 class BaseDao:
     def test():
         return ''
