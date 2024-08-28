@@ -1,6 +1,5 @@
 # self
 # from config.log import console
-from uuid import UUID, uuid4
 from config.fastapi_config import app
 from service.user import UsersService
 from do.user import User
@@ -11,31 +10,35 @@ from fastapi import APIRouter, HTTPException, Request, status
 
 router = APIRouter()
 
-# post
-@router.post("/add", status_code=status.HTTP_201_CREATED)
-async def add(user: User):
-    try:
-        # 调用函数
-        await UsersService.add(user)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=e)
+
+@router.post("/", status_code=status.HTTP_201_CREATED)
+async def add(user: User) -> str:
+    return await UsersService.add(user)
 
 
-# get
-@router.get("/select_by_id", status_code=status.HTTP_201_CREATED)
-async def select_by_id(id: str) -> User | None:
-    return await UsersService.select_by_id(id)
+@router.delete("/")
+async def delete(id: str):
+    await UsersService.delete(id)
 
 
-# update
-@router.put("/update_by_email")
-async def update_by_email(name: str, email: str):
-    await UsersService.update_by_email(name, email)
-    
-# delete
-@router.delete("/delete_by_id")
-async def delete_by_id(id: str):
-    await UsersService.delete_by_id(id)
+@router.put("/")
+async def update(user: User):
+    await UsersService.update(user)
 
 
-app.include_router(router, prefix="/user", tags=["user"])
+@router.get("/", status_code=status.HTTP_201_CREATED)
+async def select(id: str) -> User | None:
+    return await UsersService.select(id)
+
+@router.get("/list", status_code=status.HTTP_201_CREATED)
+async def list() -> list[User]:
+    return await UsersService.list()
+
+
+app.include_router(router, prefix="/user", tags=["用户"])
+
+
+# try:
+# 调用函数
+# except Exception as e:
+#     raise HTTPException(status_code=500, detail=e)

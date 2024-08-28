@@ -64,6 +64,23 @@ def Data(f):
             raise e
     return wrapper
 
+def DataNoCommit(f):
+    '''装饰器_负责创建执行和关闭'''
+    @wraps(f)
+    async def wrapper(*args, **kwargs):   
+        try:
+            # 创建一个配置过的Session类
+            async with sessionLocal() as session :# 确保 session 总是被关闭
+                # 设置session类型
+                kwargs['session'] = session   # 将 session 作为关键字参数传递给 f
+                result = await f(*args, **kwargs)
+                return result
+        except Exception as e:
+            # console.exception("数据库问题:"+str(e.orig))
+            console.error("数据库问题:"+str(e))
+            raise e
+    return wrapper
+
 
 
 console.log('...数据库配置完成')

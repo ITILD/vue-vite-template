@@ -1,37 +1,42 @@
-# self
-from uuid import UUID, uuid4
-
-from sqlmodel import select
-from config.db import Data
-from do.user import User
 from sqlmodel.ext.asyncio.session import AsyncSession
+from sqlmodel import select
+
+# self
+from config.db import Data,DataNoCommit
+from do.user import User
 
 
 class UserDao:
 
-    @Data
-    async def insert(user: User, session=AsyncSession):
-        """插入一个新的用户"""
-        r = session.add(user)
-        return r
-        # 不需要显式调用 session.commit()，因为装饰器已经处理了
+    @DataNoCommit
+    async def add(user: User, session=AsyncSession) -> str:
+        """插入一个新的用户  无需显式调用 session.commit()，因为装饰器已经处理了"""
+        session.add(user)
+        await session.commit()  # 提交事务
+        await session.refresh(user)  # 提交事务
+        # 显示刷新  数据锁和同步问题
+        return user.id
 
     @Data
-    async def select_by_id(id: str, session=AsyncSession) -> User|None:
+    async def delete(id: str, session=AsyncSession):
+        return await session.delete(User, id)
+
+    @Data
+    async def update(name: str, email: str, session=AsyncSession):
+        return await session.get(User, email)
+
+    @DataNoCommit
+    async def select(id: str, session=AsyncSession) -> User | None:
+        return await session.get(User, id)
+
+    @DataNoCommit
+    async def list(session=AsyncSession) -> list[User]:
+        result = await session.exec(select(User))
+        users = result.all()
+        return users
+
         # 快捷方式 id
         # sql = select(User).where(User.id == id)
         # print(sql) # 这里可以打印出sql
         # result = await session.execute(sql)
         # data = result.scalars().first()
-        user = await session.get(User, id)
-        return user
-    
-    # update update_by_email
-    @Data
-    async def update_by_email(name: str,email:str, session=AsyncSession):
-        return await session.get(User, email)
-    
-    # delete delete_by_id
-    @Data
-    async def delete_by_id(id: str, session=AsyncSession):
-        return await session.delete(User, id)
