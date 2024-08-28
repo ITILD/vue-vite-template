@@ -11,7 +11,7 @@ from fastapi import APIRouter, HTTPException, Request, status
 
 router = APIRouter()
 
-
+# post
 @router.post("/add", status_code=status.HTTP_201_CREATED)
 async def add(user: User):
     try:
@@ -21,16 +21,21 @@ async def add(user: User):
         raise HTTPException(status_code=500, detail=e)
 
 
-#  get
+# get
 @router.get("/select_by_id", status_code=status.HTTP_201_CREATED)
 async def select_by_id(id: str) -> User | None:
     return await UsersService.select_by_id(id)
 
 
-# 测试
+# update
 @router.put("/update_by_email")
 async def update_by_email(name: str, email: str):
     await UsersService.update_by_email(name, email)
+    
+# delete
+@router.delete("/delete_by_id")
+async def delete_by_id(id: str):
+    await UsersService.delete_by_id(id)
 
 
 app.include_router(router, prefix="/user", tags=["user"])

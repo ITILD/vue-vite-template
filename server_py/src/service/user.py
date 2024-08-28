@@ -29,4 +29,8 @@ class UsersService:
     @staticmethod
     async def update_by_email(name: str,email:str):
         await UserDao.update_by_email(name,email)
+        
+    @staticmethod
+    async def delete_by_id(id: str):
+        await UserDao.delete_by_id(id)
 
