@@ -11,7 +11,7 @@ from fastapi import APIRouter, HTTPException, Request, status
 router = APIRouter()
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED)
+@router.post("/", status_code=status.HTTP_201_CREATED, summary='添加用户')
 async def add(user: User) -> str:
     return await UsersService.add(user)
 

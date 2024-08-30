@@ -2,7 +2,7 @@
 from config.log import console
 from config.fastapi_config import app
 # import config
-from config import db,fastapi_config,path,log
+from config import db,fastapi_config,path,log,index
 
 from controller import index,user,utils,ws
 # lib

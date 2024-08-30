@@ -11,6 +11,7 @@
     "build_nuitka_w": "conda activate test_all &nuitka --windows-disable-consol  --standalone  --include-package=uvicorn --include-package=fastapi --output-dir=a_dist_nuitka --output-filename=TestAppName  --windows-icon-from-ico=source/img/ion/favicon.ico src/server_main.py ",
     "update_install_lib": "conda activate test_all &  pipreqs --use-local --encoding=utf8 --force . & pip install -r requirements.txt",
     "update_all_lib": "conda activate test_all & pip freeze > requirements.txt",
-    "update_use_lib": "conda activate test_all &  pipreqs --use-local --encoding=utf8 --force ."
+    "update_use_lib": "conda activate server_py &  pipreqs --use-local --encoding=utf8 --force .",
+    "export_conda_env": "conda activate server_py & conda env export > environment.yaml"
   }
 }

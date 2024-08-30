@@ -24,3 +24,6 @@ path_config = os.path.join(path_base, 'source','config','logging.ini' )
 
 # html
 path_html = os.path.join(path_base, 'source','html')
+
+
+config_yaml = os.path.join(path_base, "source", "config", "config.yaml")
