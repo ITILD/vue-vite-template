@@ -56,24 +56,29 @@ where.exe python # windows
 
 ```json
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: FastAPI",
-            "type": "python",
-            "request": "launch",
-            "module": "uvicorn",
-            "args": [
-                "src.server_main:app", "--reload","--port", "1667"
-            ],
-            // linux
-            "python":"/opt/conda/envs/test_all/bin/python",
-            "jinja": true,
-            "justMyCode": true,
-            "env": {"PYTHONPATH": "${workspaceRoot}/src"}
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: FastAPI",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "server_main:app",
+        "--reload",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "1666"
+      ],
+      "python": "D:/a_code_lib/conda_env/pc_py/python",
+      "jinja": true,
+      "justMyCode": true,
+      "env": { "PYTHONPATH": "${workspaceRoot}/src" }
+    }
+  ]
 }
+
 ```
 
 ### 调试
