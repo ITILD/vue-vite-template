@@ -14,11 +14,19 @@ from sqlalchemy.orm import sessionmaker
 
 
 # 枚举类
-class DBConnectType:
+class DataLoaderType:
     sqlite = "sqlite+aiosqlite"
     postgresql = "postgresql+asyncpg"
     # mysql = "mysql+aiomysql://"
 
+
+class DataLoaderInterface:
+
+    def __init__(self):
+        raise NotImplementedError
+
+    def connect(self):
+        raise NotImplementedError
 
 class SqlConnect:
     url: str = None
@@ -26,28 +34,25 @@ class SqlConnect:
     host: str = None
     port: int = None
     engine: create_async_engine = None
-
     def __init__(
-        self, type: DBConnectType, path: str, user: str, pwd: str, host: str, port: int
+        self, type: DataLoaderType, path: str, user: str, pwd: str, host: str, port: int
     ):
-        if type == DBConnectType.sqlite:
+        # 打包跟随程序
+        if type == DataLoaderType.sqlite:
             self.url = f"{type}:///{path}"
-        elif type == DBConnectType.postgresql:
+        # 远程
+        elif type == DataLoaderType.postgresql:
             # postgresql+asyncpg://hero:heroPass123@0.0.0.0:5432/heroes_db
             self.url = f"{type}://{user}:{pwd}@{host}:{port}/{path}"
         # todo: mysql
         #  "mysql+pymysql://user:password@host:port/database"
-
     def connect(self, url: str):
-        self.url = url
+        self.engine = url
 
 
 SQLALCHEMY_DATABASE_URL = "source/db/base.db"
 SQL_TYPE_SQLITE = "sqlite+aiosqlite:///"
-# 注意：需要提前安装pymysql， pip install pymysql
-# SQLALCHEMY_DATABASE_URL = "mysql+pymysql://user:password@host:port/database"
-# 数据库连接列表
-SQL_LIST = [{"value": SQL_TYPE_SQLITE + SQLALCHEMY_DATABASE_URL, type: "sqlite"}]
+
 
 
 engine = create_async_engine(
