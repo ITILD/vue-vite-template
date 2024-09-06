@@ -81,6 +81,7 @@ SQLALCHEMY_DATABASE_URL = "source/db/base.db"
 dataBaseSqliteDeafault = DataBaseSqlite(SQLALCHEMY_DATABASE_URL)
 dataBaseSqliteDeafault.connect()
 
+engine = dataBaseSqliteDeafault.engine
 sessionLocalUse = dataBaseSqliteDeafault.sessionLocal
 
 
