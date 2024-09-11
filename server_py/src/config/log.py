@@ -5,6 +5,7 @@ import logging.config
 from config.path import path_base,path_config
 # 读取配置文件
 print(path_config)
+# python3.10.4版本
 logging.config.fileConfig(path_config,encoding='utf-8')
 
 '''

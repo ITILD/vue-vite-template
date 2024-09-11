@@ -5,7 +5,7 @@ from config.index import conf
 
 # import config
 from config import db, fastapi_config, path, log, index
-from controller import index, user, utils, ws,test0
+from controller import index, user, utils, ws, test0
 
 print("test")
 # lib
@@ -24,5 +24,12 @@ if __name__ == "__main__":
         "server_main:app",
         host=conf["server"]["host"],
         port=conf["server"]["port"],
-        reload=True
+        reload=True,
     )
+    # uvicorn.run(
+    #     "server_main:app",
+    #     host=conf["server"]["host"],
+    #     port=conf["server"]["port"],
+    #     workers=1,
+    # )
+    # gunicorn server_main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:1888
