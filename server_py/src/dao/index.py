@@ -4,11 +4,6 @@ from sqlmodel import SQLModel
 
 class TableDao:
     '''数据库基础操作类'''
-    # def create():
-    #     '''创建所有未创建的表格'''
-    #     # BaseDaoManager.metadata.create_all(engine)
-    #     SQLModel.metadata.create_all(engine)
-        
     async def create():
         '''创建所有未创建的表格'''
         async with engine.begin() as conn:

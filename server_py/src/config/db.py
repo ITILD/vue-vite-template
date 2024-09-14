@@ -10,17 +10,12 @@ from functools import wraps
 from sqlmodel import create_engine, Session
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlmodel.ext.asyncio.session import AsyncSession
+from sqlalchemy.ext.asyncio.engine import AsyncEngine
 from sqlalchemy.pool import QueuePool
 from sqlalchemy.orm import sessionmaker
 
 # baselib
 from abc import ABC, abstractmethod
-
-# # 枚举类
-# class DataBaseType:
-#     sqlite = "sqlite+aiosqlite"
-#     postgresql = "postgresql+asyncpg"
-#     # mysql = "mysql+aiomysql://"
 
 
 # 数据接口类
@@ -40,7 +35,7 @@ class DataBaseSqlite(DataBaseInterface):
     url: str = None
     engine: create_async_engine = None
     sessionLocal: sessionmaker = None
-    
+
     def __init__(self, path: str):
         # 打包跟随程序
         type = "sqlite+aiosqlite"
@@ -48,9 +43,11 @@ class DataBaseSqlite(DataBaseInterface):
 
     def connect(self):
         # 控制台打印SQL
-        engine = engine = create_async_engine( self.url, echo=True )
-        self.sessionLocal =  sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
-        
+        engine = engine = create_async_engine(self.url, echo=True)
+        self.sessionLocal = sessionmaker(
+            engine, expire_on_commit=False, class_=AsyncSession
+        )
+
     def disconnect(self):
         print("sqlite disconnect")
 
@@ -62,26 +59,32 @@ class DataBasePostgre(DataBaseInterface):
     port: int = None
     engine: create_async_engine = None
     sessionLocal: sessionmaker = None
-    
+
     def __init__(self, path: str, user: str, pwd: str, host: str, port: int):
         type = "postgresql+asyncpg"
         # postgresql+asyncpg://hero:heroPass123@0.0.0.0:5432/heroes_db
         self.url = f"{type}://{user}:{pwd}@{host}:{port}/{path}"
         # todo: mysql
         #  "mysql+pymysql://user:password@host:port/database"
+
     def connect(self):
         # 控制台打印SQL
-        engine = engine = create_async_engine( self.url, echo=True )
-        self.sessionLocal =  sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
+        self.engine = create_async_engine(self.url, echo=True)
+        self.sessionLocal = sessionmaker(
+            engine, expire_on_commit=False, class_=AsyncSession
+        )
+
     def disconnect(self):
         print("postgresql disconnect")
+
 
 SQLALCHEMY_DATABASE_URL = "source/db/base.db"
 
 dataBaseSqliteDeafault = DataBaseSqlite(SQLALCHEMY_DATABASE_URL)
 dataBaseSqliteDeafault.connect()
 
-engine = dataBaseSqliteDeafault.engine
+# 当前数据引擎
+engine: AsyncEngine = dataBaseSqliteDeafault.engine
 sessionLocalUse = dataBaseSqliteDeafault.sessionLocal
 
 

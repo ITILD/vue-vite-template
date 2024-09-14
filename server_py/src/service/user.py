@@ -1,5 +1,5 @@
 # self
-from do.user import User
+from do.user import User,UserCreate
 from dao.user import UserDao
 
 # lib
@@ -9,7 +9,7 @@ class UsersService:
     """user"""
 
     @staticmethod
-    async def add(user: User)->str:
+    async def add(user: UserCreate)->str:
         return await UserDao.add(user)
 
     @staticmethod

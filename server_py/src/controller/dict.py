@@ -10,6 +10,8 @@ from fastapi import APIRouter, HTTPException, Request, status
 
 router = APIRouter()
 
+controller_init(router, "user", UsersService,User, UserCreate)
+
 @router.post("/", status_code=status.HTTP_201_CREATED, summary="添加用户返回id")
 async def add(user: UserCreate) -> str:
     return await UsersService.add(user)
@@ -35,10 +37,5 @@ async def list() -> list[User]:
     return await UsersService.list()
 
 
-app.include_router(router, prefix="/user", tags=["用户"])
+app.include_router(router, prefix="/dict", tags=["字典"])
 
-
-# try:
-# 调用函数
-# except Exception as e:
-#     raise HTTPException(status_code=500, detail=e)
