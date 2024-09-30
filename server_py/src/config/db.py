@@ -43,9 +43,9 @@ class DataBaseSqlite(DataBaseInterface):
 
     def connect(self):
         # 控制台打印SQL
-        engine = engine = create_async_engine(self.url, echo=True)
+        self.engine = create_async_engine(self.url, echo=True)
         self.sessionLocal = sessionmaker(
-            engine, expire_on_commit=False, class_=AsyncSession
+            self.engine, expire_on_commit=False, class_=AsyncSession
         )
 
     def disconnect(self):
@@ -71,7 +71,7 @@ class DataBasePostgre(DataBaseInterface):
         # 控制台打印SQL
         self.engine = create_async_engine(self.url, echo=True)
         self.sessionLocal = sessionmaker(
-            engine, expire_on_commit=False, class_=AsyncSession
+            self.engine, expire_on_commit=False, class_=AsyncSession
         )
 
     def disconnect(self):
