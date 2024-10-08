@@ -4,9 +4,9 @@ from sqlmodel import select
 # self
 from config.db import Data,DataNoCommit
 from do.dict import Dict,DictCreate, DictPublic
-from utils.dataBase.DBEX import DBEX
+from utils.dataBase.DBEX import DBExtention
 
 class DictDao:
     """dict"""
 
-DBEX.dao_init(DictDao,Dict,DictCreate)
+DBExtention.dao_init(DictDao,Dict,DictCreate)
