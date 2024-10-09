@@ -1,5 +1,5 @@
 # self
-from do.dict import Dict,DictCreate
+from do.dict import Dict,DictCreate,DictUpdate
 from dao.dict import DictDao
 from utils.dataBase.DBEX import DBExtention
 # lib
@@ -8,4 +8,4 @@ from utils.dataBase.DBEX import DBExtention
 class DictService:
     """dict"""
 
-DBExtention.service_init(DictService,DictDao,Dict,DictCreate)
+DBExtention.service_init(DictService,DictDao,Dict,DictCreate,DictUpdate)

@@ -45,7 +45,8 @@ async def add_process_time_header(request: Request, call_next):
     dealToken(request, response)
 
     # X- 作为前缀代表专有自定义请求头
-    response.headers["X-Process-Time"] = str(time.time() - start_time)
+    response.headers["X-Process-Time"] = str((time.time() - start_time)* 1000)
+
     return response
 
 
