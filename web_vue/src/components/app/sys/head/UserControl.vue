@@ -105,6 +105,14 @@ const buttonList = ref([{
   }
 },
 {
+  name: '后台管理',
+  icon: SettingSVG,
+  url: '/_server',
+  clickFuc: () => {
+    router.push('/_server')
+  }
+},
+{
   name: '设置',
   icon: SettingSVG,
   clickFuc: openSysSettingShow
