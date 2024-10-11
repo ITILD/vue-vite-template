@@ -28,26 +28,6 @@
           <span>.layer1混合仿纸</span>
         </p>
       </li>
-      <!-- </ul> -->
-      <!--  -->
-      <!--混合仿纸质 2-->
-      <!-- <ul class="grid grid-cols-1 md:grid-cols-8"> -->
-      <!-- <li>
-        <div class="w-full aspect-[9/5] md:aspect-[9/16]">
-          <div w-full h-full class="layer21"></div>
-        </div>
-        <p>
-          <span>.layer2</span>
-        </p>
-      </li>
-      <li>
-        <div w-full class="aspect-[9/5] md:aspect-[9/16]">
-          <div w-full h-full bg-no-repeat bg-center bg-contain class="layer22"></div>
-        </div>
-        <p>
-          <span>.layer2无混合</span>
-        </p>
-      </li> -->
       <li>
         <div w-full relative class="aspect-[9/5] md:aspect-[9/16]">
           <div w-full h-full absolute class="layer21"></div>
@@ -63,6 +43,16 @@
         </div>
         <p>
           <span>.layer2混合仿纸</span>
+        </p>
+      </li>
+
+      <li>
+        <div w-full relative class="aspect-[9/5] md:aspect-[9/16]">
+          <div w-full h-full absolute class="layer11-bg"></div>
+          <div w-full h-full mix-blend-overlay class="layer12-bg"></div>
+        </div>
+        <p>
+          <span>.layer1混合仿纸 颜色磨砂测试</span>
         </p>
       </li>
     </ul>
@@ -122,4 +112,15 @@ onBeforeUnmount(() => {})
 } */
 /* https://garden.bradwoods.io/notes/css/blend-modes */
 /* background-repeat: repeat; */
+
+
+.layer11-bg {
+  background: rgb(18, 40, 106);
+  /* background: hsl(68, 35%, 76%); */
+}
+.layer12-bg {
+  box-shadow: inset 0 0 40px 10px hsla(0, 0%, 0%, 0.8);
+  background: url('@/assets/lib/_dev/beauty/noise.webp'),
+    linear-gradient(to bottom right, hsla(0, 0%, 0%, 0) 40%, hsla(0, 0%, 0%, 1));
+}
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div grid-head-center-foot>
-    <SysHeader h-14 bg-deep-1 z-1 shadow shadow-gray />
+    <SysHeader h-14 bg-deep-1 z-1 shadow />
     <!-- :style="'clip-path: polygon(0 0, 100% 0, 100% 100%, 0 '+clipPath[0]+'%)'"  -->
-    <main bg-deep-3 px-1 py-2>
+    <main bg-deep-1 px-1 py-2>
       <div bg-deep-2 h-full rounded-md p-2>
 
         <!-- 公开高评分  list  -->       

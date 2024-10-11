@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <hr border-gray-200 sm:mx-auto dark:border-gray-5 lg:mb-2 />
+    <!-- <hr border-gray-400 sm:mx-auto dark:border-gray-8 lg:mb-2 /> -->
     <!-- 关联账号 本站 备案 -->
     <div sm:flex sm:items-center sm:justify-between>
       <!-- 关联账号 -->
