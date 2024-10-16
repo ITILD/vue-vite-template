@@ -19,7 +19,10 @@ threading.Thread(target=uvicorn.run, args=(app,),
 
 '''pc'''
 import webview
-webview.start()
+webview.start(
+    # 指定edgechromium 或 chrome
+    # gui='edgechromium'
+    )
 
 # 启动
 if __name__ == "__main__":
