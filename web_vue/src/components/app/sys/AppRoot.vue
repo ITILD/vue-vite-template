@@ -1,5 +1,5 @@
 <template>
-  <!-- 设置框-总 -->
+  <!-- 设置框-总-包含背景 -->
   <SimplePopover fixed left-0 top-0 w-full h-full :show="sysSettingStore.isSysSettingShow" :bg="true"  backdrop-blur-sm>
     <ShowHidden v-show="sysSettingStore.isSysSettingShow">
       <!-- 设置框-内 -->

@@ -6,12 +6,12 @@
       <div bg-deep-2 h-full rounded-md p-2>
         测试
 
-        <!-- 公开高评分  list  -->       
+        <!-- 公开高评分  list  -->
         <!-- 私有置顶类别 -->
         <!-- 私有置顶文章 -->
 
-  
-<!-- Chroma 嵌入式向量和 -->
+
+        <!-- Chroma 嵌入式向量和 -->
 
         <!-- 类似知乎抖音刷 -->
         <!-- <div>
@@ -41,7 +41,8 @@
       </div>
 
       <MoveWindow ref="dragRef" right-8 bottom-30 z-2>
-        <div w-30 h-30 rounded-3xl flex-center shadow-md shadow-gray bg-opacity-10 hover:bg-opacity-10 btn-deep-5 backdrop-blur-sm>
+        <div w-30 h-30 rounded-3xl flex-center shadow-md shadow-gray bg-opacity-10 hover:bg-opacity-10 btn-deep-5
+          backdrop-blur-sm>
 
           <div w-full h-full font-600 text-4xl font-serif text-deep-2 @click="addPage">新建</div>
           <!-- /blog/blog-new 路由 -->

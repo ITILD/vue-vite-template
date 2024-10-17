@@ -7,23 +7,32 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 // css 辅助
 import UnoCSS from 'unocss/vite'
 
-// 自动导入按需引入 vue ion
+// 自动导入按需引入 vue ion router
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import VueRouter from 'unplugin-vue-router/vite'
+// 
 import path from 'path'
 const pathSrc = path.resolve(__dirname, 'src')
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    VueRouter({}),
     vue(),
     VueDevTools(),
     UnoCSS(),
     AutoImport({
       // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-      imports: ['vue', 'vue-router', 'pinia'],
+      imports: ['vue', 'vue-router', 'pinia'], // eslint报错解决
+      eslintrc: {
+        // 一旦生成配置文件之后，最好把enable关掉，即改成false。否则这个文件每次会在重新加载的时候重新生成，这会导致eslint有时会找不到这个文件。
+        enabled: false, // Default `false`
+        filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+        globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+      },
       resolvers: [
         // 自动导入图标组件
         IconsResolver({ prefix: 'Icon' })

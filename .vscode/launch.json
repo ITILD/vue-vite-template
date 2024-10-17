@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    // 服务测试
+    {
+      "name": "Python: server_py",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "server_main:app",
+        "--reload",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "1777"
+      ],
+      "python": "D:/a_code_lib/conda_env/pc_py/python",
+      "jinja": true,
+      "justMyCode": true,
+      "env": { "PYTHONPATH": "${workspaceRoot}/server_py/src" }
+    }
+  ]
+}

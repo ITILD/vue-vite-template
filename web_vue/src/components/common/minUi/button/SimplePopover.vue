@@ -1,5 +1,5 @@
 <template>
-  <div ref="dropdownRef" v-if="show" bg-deep-2 :class="bg ? 'pointer-events-auto bg-opacity-80' : 'pointer-events-none'">
+  <div ref="dropdownRef" v-if="show"   :class="bg ? 'pointer-events-auto bg-opacity-80' : 'pointer-events-none'">
     <!-- 中间 -->
     <slot pointer-events-auto></slot>
   </div>

@@ -13,12 +13,10 @@ let renderer: THREE.WebGLRenderer
 // vues
 onMounted(() => {
   initMap()
-  window.$ObjLargeTemp.set('scene', scene)
 })
 onBeforeUnmount(() => {
   scene.clear()
   renderer.dispose()
-  window.$ObjLargeTemp.delete('scene')
 })
 
 const initMap = () => {
