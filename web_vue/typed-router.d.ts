@@ -30,6 +30,7 @@ declare module 'vue-router/auto-routes' {
     '/_dev/libBase/marked': RouteRecordInfo<'/_dev/libBase/marked', '/_dev/libBase/marked', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/mediapipe_face': RouteRecordInfo<'/_dev/libBase/mediapipe_face', '/_dev/libBase/mediapipe_face', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/mediapipe_hand': RouteRecordInfo<'/_dev/libBase/mediapipe_hand', '/_dev/libBase/mediapipe_hand', Record<never, never>, Record<never, never>>,
+    '/_dev/libBase/mediapipe_holistic': RouteRecordInfo<'/_dev/libBase/mediapipe_holistic', '/_dev/libBase/mediapipe_holistic', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/mediapipe_pose': RouteRecordInfo<'/_dev/libBase/mediapipe_pose', '/_dev/libBase/mediapipe_pose', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/monaco': RouteRecordInfo<'/_dev/libBase/monaco', '/_dev/libBase/monaco', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/opencv': RouteRecordInfo<'/_dev/libBase/opencv', '/_dev/libBase/opencv', Record<never, never>, Record<never, never>>,

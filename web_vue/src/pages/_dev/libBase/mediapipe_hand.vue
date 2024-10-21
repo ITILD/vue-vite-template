@@ -75,7 +75,7 @@ async function loadMediapipeModels() {
   // https://www.npmjs.com/package/@mediapipe/tasks-vision?activeTab=readme
   const vision = await FilesetResolver.forVisionTasks(
     // 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.1.0-alpha-16/wasm'
-    '/jsLib/mediapipe/tasks-vision-0.10.7/wasm'
+    '/jsLib/mediapipe/tasks-vision-0.10.17/wasm'
   )
   const landmarker = await HandLandmarker.createFromOptions(
     vision,
