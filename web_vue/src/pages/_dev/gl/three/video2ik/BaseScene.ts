@@ -2,7 +2,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { GroundProjectedSkybox } from 'three/examples/jsm/objects/GroundProjectedSkybox.js';
 import { Mesh, MeshBasicMaterial, SphereGeometry, Vector3 } from 'three';
 
 class BaseScene {
@@ -41,10 +40,11 @@ class BaseScene {
         this._setLight()
         this._setCamera()
         this._setRender()
-        window.addEventListener("resize", this._resize.bind(this));
         this._setControl()
-        // this._setGround()
-        this._setGround1()
+        this._setGround()
+        this.setHelper()
+        // this._setGroundByHdr()
+        window.addEventListener("resize", this._resize.bind(this));
     }
 
 
@@ -60,7 +60,7 @@ class BaseScene {
         this.scene = new THREE.Scene();
         // //设置背景
         this.scene.background = new THREE.Color(0xa0a0a0);
-        this.scene.background = new THREE.Color('black');
+        // this.scene.background = new THREE.Color('black');
         // //设置颜色渐变
         // this.scene.fog = new THREE.Fog( 0xa0a0a0, 100, 200 );
         // this.scene.fog = new THREE.Fog('black', 100, 200);
@@ -75,28 +75,26 @@ class BaseScene {
         // aspect	相机视锥体水平方向和竖直方向长度比，一般设置为Canvas画布宽高比width / height
         // near	相机视锥体近裁截面相对相机距离
         // far	相机视锥体远裁截面相对相机距离，far-near构成了视锥体高度方向
+
         // 视场角 考虑读取摄像头
         const fov = 45;
         this.camera = new THREE.PerspectiveCamera(fov, this.canvasWidth / this.canvasHeight, 0.1, 1000);
 
-        // 正交相机 测试mediapipe已经做了透视处理!!!!!!!!!!!!!!!!!
+        // 正交相机 测试mediapipe已经做了透视处理
         // this.camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.1, 100);
 
         // 相机方位参数
-        // this.camera.position.set(0, 20, 5); //设置相机位置
+        this.camera.position.set(0, 10, 10); //设置相机位置
     }
 
-
+    /**
+     * THREE.PointLight（点光源）
+     * THREE.AmbientLight（环境光）会将场景中的所有物体渲染为相同的颜色 无阴影
+     * THREE.HemisphereLight（半球 环境光）可以创建更加贴近自然的户外光照效果。 无阴影
+     * THREE.LensFlare（镜头光晕）
+     * THREE.DirectionalLight （平行光）可以创建太阳光效果，可以产生阴影
+     */
     private _setLight() {
-        // THREE.PointLight（点光源）
-        // THREE.AmbientLight（环境光）会将场景中的所有物体渲染为相同的颜色 无阴影
-        // THREE.HemisphereLight（半球 环境光）可以创建更加贴近自然的户外光照效果。 无阴影
-        // THREE.LensFlare（镜头光晕）
-
-        // 环境光
-        // const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        // this.scene!.add(ambientLight);
-
         // 环境光
         const hemiLight = new THREE.HemisphereLight(0xffffff, 0x8d8d8d, 3);
         hemiLight.position.set(0, 100, 0);
@@ -117,6 +115,8 @@ class BaseScene {
         // 设置阴影贴图的分辨率
         dirLight.shadow.mapSize.set(2048, 2048)
         this.scene!.add(dirLight);
+
+        // 辅助
         // this.scene.add( new THREE.CameraHelper( dirLight.shadow.camera ) );
     }
 
@@ -158,7 +158,7 @@ class BaseScene {
     private _setGround() {
         // 100*100地面
         // const mesh = new THREE.Mesh( new THREE.PlaneGeometry( 500, 500 ), new THREE.MeshPhongMaterial( { color: 0xcbcbcb, depthWrite: false } ) );
-        const mesh = new THREE.Mesh(new THREE.PlaneGeometry(500, 500), new THREE.MeshPhongMaterial({ color: 'black', depthWrite: false }));
+        const mesh = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), new THREE.MeshPhongMaterial({ color: 'black', depthWrite: false }));
         // 绕x轴旋转-90    水平地表 
         mesh.rotation.x = -Math.PI / 2;
         // 开启地表阴影
@@ -166,9 +166,9 @@ class BaseScene {
         this.scene!.add(mesh);
     }
     /**
-     * 设置地面
+     * 设置Hdr地面和天空
      */
-    private async _setGround1() {
+    private async _setGroundByHdr() {
         const hdrLoader = new RGBELoader();
         const envMap = await hdrLoader.loadAsync('textures/equirectangular/blouberg_sunrise_2_1k.hdr');
         envMap.mapping = THREE.EquirectangularReflectionMapping;
@@ -177,21 +177,23 @@ class BaseScene {
             radius: 100,
             enabled: true,
         };
-        // const paramThis = { height: params.height, radius: params.radius }
-        // let skybox = new GroundProjectedSkybox(envMap, paramThis);
-        let skybox = new GroundedSkybox(envMap, params.height, params.radius);
+        // 半圆天空盒
+        const skybox = new GroundedSkybox(envMap, params.height, params.radius);
         skybox.position.y = params.height - 0.01;
         this.scene.add(skybox);
-
         this.scene.environment = envMap;
-
     }
 
     private _setControl() {
-        this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement as unknown as HTMLElement)
         // this.controls.listenToKeyEvents(window) // optional
         // this.controls.maxPolarAngle = Math.PI / 2
+    }
 
+    setHelper() {
+        // AxesHelper：辅助观察的坐标系
+        const axesHelper = new THREE.AxesHelper(150);
+        this.scene.add(axesHelper);
     }
 
 

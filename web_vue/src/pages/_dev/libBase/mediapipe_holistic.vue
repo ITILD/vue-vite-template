@@ -2,16 +2,16 @@
   <div full-fex bg-deep-3>
     <div>
       <video id="videoDom" width="500" height="500"></video>
-      <div>fps:{{ fps.toFixed(3) }}</div>
+      <div>fps:{{ fpsAll.base.toFixed(3) }}</div>
+      <div>hand:{{ fpsAll.hand }}</div>
+      <div>face:{{ fpsAll.face.toFixed(3) }}</div>
+      <div>pose:{{ fpsAll.pose.toFixed(3) }}</div>
     </div>
     <div h-100 w-200 flex flex-wrap>
-      <div w-full>x y z visibility</div>
-      <ul v-for="categorie in categories" :key="categorie.index" w-40>
-        <li>{{ categorie.x.toFixed(4) }}</li>
-        <li>{{ categorie.y.toFixed(4) }}</li>
-        <li>{{ categorie.z.toFixed(4) }}</li>
-        <li>{{ categorie.visibility.toFixed(4) }}</li>
-      </ul>
+      <div v-for="categorie in categories" :key="categorie.index" w-40>
+        <div>{{ categorie.categoryName }}</div>
+        <div>{{ categorie.score.toFixed(8) }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -66,9 +66,21 @@ class FpsShow {
   }
 }
 
-const fpsShow = new FpsShow()
+const baseFpsShow = new FpsShow()
+const handFpsShow = new FpsShow()
+const poseFpsShow = new FpsShow()
+const faceFpsShow = new FpsShow()
 
-const fps = ref(0)
+const fpsAll = ref(
+  {
+    base: 0,
+    hand: '0',
+    pose: 0,
+    face: 0
+  }
+)
+
+
 
 
 /**
@@ -85,10 +97,11 @@ async function loadMediapipeModels() {
     {
       baseOptions: {
         modelAssetPath: `/jsLib/mediapipe/holistic_landmarker.task`,
-        delegate: "GPU"
+        // delegate: "GPU"
       },
       runningMode: "VIDEO",
-      minPoseDetectionConfidence:0.3
+      // minPoseDetectionConfidence:0.3,
+      outputFaceBlendshapes: true,
     });
 
   console.log('Loaded MediaPipe模型.')
@@ -127,8 +140,8 @@ function onVideoFrame(time: any) {
   // 脸特征提取
   detectFaceLandmarks(time)
   video.requestVideoFrameCallback(onVideoFrame)
-  fpsShow.update()
-  fps.value = fpsShow.getFps()
+  baseFpsShow.update()
+  fpsAll.value.base = baseFpsShow.getFps()
 }
 
 /**
@@ -140,22 +153,37 @@ function detectFaceLandmarks(time: any) {
   // 已加载人脸识别模型
   if (!landmarker) return
   // 对提供的视频帧执行人脸特征点检测
-  const landmarks = landmarker.detectForVideo(video, time)
+  let landmarks = landmarker.detectForVideo(video, time)
 
 
-  const faceLandmarks = landmarks.faceLandmarks
+  // const faceLandmarks = landmarks.faceLandmarks
+  const faceBlendshapes = landmarks.faceBlendshapes
   const leftHandLandmarks = landmarks.leftHandLandmarks
-  const leftHandWorldLandmarks = landmarks.leftHandWorldLandmarks
+  const rightHandLandmarks = landmarks.rightHandLandmarks
   const poseLandmarks = landmarks.poseLandmarks
-  const poseSegmentationMasks = landmarks.poseSegmentationMasks
-  const poseWorldLandmarks = landmarks.poseWorldLandmarks
 
-  // 身体特征点
-  // const landmarks_local = landmarks.landmarks
-  // const worldLandmarks = landmarks.worldLandmarks
-  // if (landmarks_local && landmarks_local[0]) categories.value = landmarks_local[0] as any
+  if(faceBlendshapes&&faceBlendshapes.length>0){
+    faceFpsShow.update()
+    fpsAll.value.face = faceFpsShow.getFps()
+  }
+  const isL = leftHandLandmarks&&leftHandLandmarks.length>0
+  const isR = rightHandLandmarks&&rightHandLandmarks.length>0
 
-  // console.log(blendshapes)
+  if(isL||isR){
+    handFpsShow.update()
+    fpsAll.value.hand = handFpsShow.getFps().toFixed(3) +
+     '__l:'+isL+'__r:'+isR
+  }else{
+    fpsAll.value.hand = handFpsShow.getFps().toFixed(3)
+  }
+  if(poseLandmarks&&poseLandmarks.length>0){
+    poseFpsShow.update()
+    fpsAll.value.pose = poseFpsShow.getFps()
+  }
+
+  //识别表情
+  // if (faceBlendshapes && faceBlendshapes[0]) categories.value = faceBlendshapes[0].categories as any
+
 }
 </script>
 

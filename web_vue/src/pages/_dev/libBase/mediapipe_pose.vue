@@ -148,7 +148,7 @@ function detectFaceLandmarks(time: any) {
 
   // 身体特征点
   const landmarks_local = landmarks.landmarks
-  const worldLandmarks = landmarks.worldLandmarks
+  // const worldLandmarks = landmarks.worldLandmarks
   if (landmarks_local && landmarks_local[0]) categories.value = landmarks_local[0] as any
 
   // console.log(blendshapes)

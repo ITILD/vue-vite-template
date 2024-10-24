@@ -2,7 +2,8 @@
   <div full-fex bg-deep-3>
     <div>
       <video id="videoDom" width="500" height="500"></video>
-      <div>fps:{{ fps.toFixed(3) }}</div>
+      <div>fps:{{ fpsAll.base.toFixed(3) }}</div>
+      <div>hand:{{ fpsAll.hand.toFixed(3) }}</div>
     </div>
     <div h-100 w-200 flex flex-wrap >
       <div v-for="categorie in categories" :key="categorie.index" w-40>
@@ -62,10 +63,17 @@ class FpsShow {
     return this.fps
   }
 }
+const baseFpsShow = new FpsShow()
+const handFpsShow = new FpsShow()
 
-const fpsShow = new FpsShow()
 
-const fps = ref(0)
+const fpsAll = ref(
+  {
+    base: 0,
+    hand: 0,
+  }
+)
+
 
 
 /**
@@ -124,8 +132,8 @@ function onVideoFrame(time: any) {
   // 脸特征提取
   detectFaceLandmarks(time)
   video.requestVideoFrameCallback(onVideoFrame)
-  fpsShow.update()
-  fps.value = fpsShow.getFps()
+  baseFpsShow.update()
+  fpsAll.value.base = baseFpsShow.getFps()
 }
 
 /**
@@ -147,9 +155,15 @@ function detectFaceLandmarks(time: any) {
   //识别表情
   const blendshapes = landmarks.faceBlendshapes
   categories.value = []
-  if (handedness && handedness[0]) categories.value.push(handedness[0][0])
-  if (handedness && handedness[1]) categories.value.push(handedness[1][0])
 
+  const hasL = handedness && handedness[0]
+  const hasR = handedness && handedness[1]
+  if (hasL||hasR) {
+    handFpsShow.update()
+    if(hasR)categories.value.push(handedness[1][0])
+    if(hasL)categories.value.push(handedness[0][0])
+  }
+  fpsAll.value.hand = handFpsShow.getFps()
   // console.log(blendshapes)
 }
 </script>

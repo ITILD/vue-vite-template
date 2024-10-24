@@ -24,6 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/_dev/gl/cesium/index copy': RouteRecordInfo<'/_dev/gl/cesium/index copy', '/_dev/gl/cesium/index copy', Record<never, never>, Record<never, never>>,
     '/_dev/gl/three/': RouteRecordInfo<'/_dev/gl/three/', '/_dev/gl/three', Record<never, never>, Record<never, never>>,
     '/_dev/gl/three/ik/': RouteRecordInfo<'/_dev/gl/three/ik/', '/_dev/gl/three/ik', Record<never, never>, Record<never, never>>,
+    '/_dev/gl/three/video2ik/': RouteRecordInfo<'/_dev/gl/three/video2ik/', '/_dev/gl/three/video2ik', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/babylon': RouteRecordInfo<'/_dev/libBase/babylon', '/_dev/libBase/babylon', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/cesium': RouteRecordInfo<'/_dev/libBase/cesium', '/_dev/libBase/cesium', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/jsts': RouteRecordInfo<'/_dev/libBase/jsts', '/_dev/libBase/jsts', Record<never, never>, Record<never, never>>,
