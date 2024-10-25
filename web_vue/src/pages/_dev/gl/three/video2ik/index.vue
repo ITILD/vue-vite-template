@@ -5,6 +5,7 @@
     <!-- muted 静音 -->
     <video ref="videoDom" muted absolute w-300px h-200px class='video-box video-js'></video>
     <!-- </div> -->
+    <div ref="echartDom" absolute z-1 bottom-2 w-600px h-200px bg-white></div>
 </template>
   
 <script setup lang="ts">
@@ -14,7 +15,11 @@ import { LandMarkManager } from "./LandMarkManager";
 import { BaseScene } from "./BaseScene";
 import { StatsManager } from "./StatsManager";
 import { CubeHelp } from "./CubeHelp";
+import { DataShowEchart } from "./DataShowEchart";
+import { Test } from "./Test";
 
+const echartDom = ref<HTMLElement>()
+let dataShowEchart: DataShowEchart
 
 const videoDom = ref<HTMLVideoElement>()
 let landmarkManager: LandMarkManager
@@ -22,9 +27,10 @@ const statsManager = new StatsManager();
 const baseScene = new BaseScene();
 let statsPose: any
 let statsThree: any
+let cubeHelp: CubeHelp
 let loopAnimate: number
 let loopPose: number
-let cubeHelp: CubeHelp
+let media: Media
 
 
 /********************** vues*******************
@@ -41,8 +47,10 @@ const init = async () => {
     await initCamera()
     await initMediaPipe()
     await initScene()
+    initEchart()
     loop()
     setStats()
+    Test.peopleHelp(baseScene.scene)
 }
 
 
@@ -55,7 +63,7 @@ const init = async () => {
  */
 const initCamera = async () => {
     const video = videoDom.value!
-    const media = new Media(video)
+    media = new Media(video)
     // // 摄像头
     // await media.getMediaDevices()
     // // 选择设备
@@ -84,13 +92,20 @@ const initScene = async () => {
     cubeHelp = new CubeHelp(baseScene.scene, baseScene.canvas, baseScene.camera)
 }
 
+const initEchart = () => {
+    dataShowEchart = new DataShowEchart(echartDom.value!);
+    dataShowEchart.initDynamicData()
+
+}
+
 
 /***************** loop  ****************
  * 
  */
 
 /**
- * 
+ * 开始循环
+ * 分频率
  */
 const loop = () => {
     // 监测身体姿态
@@ -105,6 +120,9 @@ const loop = () => {
 const onVideoFrame = (time: any) => {
     // 脸特征提取
     const landmark = landmarkManager!.detectPose(videoDom.value!, time) as []
+    if (media.isPlaying) {
+        landmark && dataShowEchart && dataShowEchart.updateDynamicData(landmark[0].x)
+    }
     landmark && showCubes(landmark)
     statsPose && statsPose.update()
     videoDom.value!.requestVideoFrameCallback(onVideoFrame)
@@ -125,7 +143,7 @@ const showCubes = (landmark: any) => {
  * 动画循环
  * @param time
  */
-const onAnimate = (time: any) => {
+const onAnimate = () => {
     baseScene.update()
     statsThree && statsThree.update()
     requestAnimationFrame(onAnimate)
@@ -140,6 +158,8 @@ const setStats = () => {
     statsThree = statsManager.add('glDom');
     statsThree.dom.style.top = '50px';
 };
+
+
 
 </script>
   

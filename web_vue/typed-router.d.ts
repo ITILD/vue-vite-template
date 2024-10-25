@@ -27,6 +27,7 @@ declare module 'vue-router/auto-routes' {
     '/_dev/gl/three/video2ik/': RouteRecordInfo<'/_dev/gl/three/video2ik/', '/_dev/gl/three/video2ik', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/babylon': RouteRecordInfo<'/_dev/libBase/babylon', '/_dev/libBase/babylon', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/cesium': RouteRecordInfo<'/_dev/libBase/cesium', '/_dev/libBase/cesium', Record<never, never>, Record<never, never>>,
+    '/_dev/libBase/echartjs': RouteRecordInfo<'/_dev/libBase/echartjs', '/_dev/libBase/echartjs', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/jsts': RouteRecordInfo<'/_dev/libBase/jsts', '/_dev/libBase/jsts', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/marked': RouteRecordInfo<'/_dev/libBase/marked', '/_dev/libBase/marked', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/mediapipe_face': RouteRecordInfo<'/_dev/libBase/mediapipe_face', '/_dev/libBase/mediapipe_face', Record<never, never>, Record<never, never>>,

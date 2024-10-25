@@ -8,7 +8,6 @@
 // 引入videojs以及样式文件
 import videojs from 'video.js'
 import 'video.js/dist/video-js.min.css'
-import {onMounted } from "vue"
 
 
     // 在onMounted阶段进行初始化

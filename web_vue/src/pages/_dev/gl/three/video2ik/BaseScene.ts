@@ -84,7 +84,7 @@ class BaseScene {
         // this.camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.1, 100);
 
         // 相机方位参数
-        this.camera.position.set(0, 10, 10); //设置相机位置
+        this.camera.position.set(0, 3, 3); //设置相机位置
     }
 
     /**
@@ -192,7 +192,7 @@ class BaseScene {
 
     setHelper() {
         // AxesHelper：辅助观察的坐标系
-        const axesHelper = new THREE.AxesHelper(150);
+        const axesHelper = new THREE.AxesHelper(2);
         this.scene.add(axesHelper);
     }
 

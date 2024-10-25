@@ -14,6 +14,7 @@ class Media {
     videoinputList: MediaDeviceInfo[] = [];
     mediaStream: MediaStream | null = null
     videoPalyer: Player | null = null;
+    isPlaying = false;
     constructor(videoDom: HTMLVideoElement) {
         this.videoDom = videoDom;
     }
@@ -118,11 +119,20 @@ class Media {
 
 
         this.videoPalyer.on('loadedmetadata', () => {
-            const duration = this.videoPalyer.duration() as number // 获取视频的完全时间（单位：秒）
+            const duration = this.videoPalyer!.duration() as number // 获取视频的完全时间（单位：秒）
             // 取整帧 30fps
             // timeAllF.value = Math.floor(duration * f2s)
-            alert(duration)
+            // alert(duration)
             //  console.log(duration) // 输出到控制台
+        })
+        this.videoPalyer.on('play', () => {
+            this.isPlaying = true;
+        })
+        this.videoPalyer.on('pause', () => {
+            this.isPlaying = false;
+        })
+        this.videoPalyer.on('ended', () => {
+            this.isPlaying = false;
         })
     }
 
@@ -150,6 +160,15 @@ class Media {
             // oncanplaythrough
             this.videoDom.onloadedmetadata = () => {
                 resolve();
+            }
+            this.videoDom.onplay = () => {
+                this.isPlaying = true;
+            }
+            this.videoDom.onpause = () => {
+                this.isPlaying = false;
+            }
+            this.videoDom.onended = () => {
+                this.isPlaying = false;
             }
         })
     }

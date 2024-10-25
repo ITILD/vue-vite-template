@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-// import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
+import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 type position = {
     x: number
@@ -35,7 +35,7 @@ class CubeHelp {
         const cube = new THREE.Mesh(geometry, material)
         this.scene.add(cube)
         cube.position.x = position.x
-        cube.position.y = position.y
+        cube.position.y = -position.y
         cube.position.z = -position.z
         return cube
     }
@@ -90,7 +90,8 @@ class CubeHelp {
         for (let index = 0; index < this.cubes.length; index++) {
             const cube = this.cubes[index]
             const position = positions[index]
-            cube.position.x = -position.x 
+            // cube.position.x = -position.x 
+            cube.position.x = position.x 
             cube.position.y = -position.y
             cube.position.z = -position.z
         }
