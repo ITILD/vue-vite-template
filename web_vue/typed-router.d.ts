@@ -45,6 +45,8 @@ declare module 'vue-router/auto-routes' {
     '/_dev/libBase/videojs': RouteRecordInfo<'/_dev/libBase/videojs', '/_dev/libBase/videojs', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/webgl': RouteRecordInfo<'/_dev/libBase/webgl', '/_dev/libBase/webgl', Record<never, never>, Record<never, never>>,
     '/_dev/libBase/WebGLAnimate': RouteRecordInfo<'/_dev/libBase/WebGLAnimate', '/_dev/libBase/WebGLAnimate', Record<never, never>, Record<never, never>>,
+    '/_server/state/Hardware': RouteRecordInfo<'/_server/state/Hardware', '/_server/state/Hardware', Record<never, never>, Record<never, never>>,
+    '/_server/table/DB': RouteRecordInfo<'/_server/table/DB', '/_server/table/DB', Record<never, never>, Record<never, never>>,
     '/[..404]': RouteRecordInfo<'/[..404]', '/:04(.*)', { 04: ParamValue<true> }, { 04: ParamValue<false> }>,
     '/blog/add': RouteRecordInfo<'/blog/add', '/blog/add', Record<never, never>, Record<never, never>>,
     '/blog/instruction': RouteRecordInfo<'/blog/instruction', '/blog/instruction', Record<never, never>, Record<never, never>>,
