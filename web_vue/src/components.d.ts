@@ -49,7 +49,6 @@ declare module 'vue' {
     SysFooter: typeof import('./components/app/sys/SysFooter.vue')['default']
     SysHeader: typeof import('./components/app/sys/SysHeader.vue')['default']
     SysSettingIndex: typeof import('./components/app/sys/setting/SysSettingIndex.vue')['default']
-    TauriGreet: typeof import('./components/template/TauriGreet.vue')['default']
     TemplateComponent: typeof import('./components/app/sampleUtils/music/TemplateComponent.vue')['default']
     TemplateComponent_00: typeof import('./components/app/sampleUtils/ocr/TemplateComponent_00.vue')['default']
     UserControl: typeof import('./components/app/sys/head/UserControl.vue')['default']
